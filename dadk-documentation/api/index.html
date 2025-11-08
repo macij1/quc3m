@@ -1,0 +1,1931 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Digital Annealer Development Kit &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Polynomials" href="dadk/BinPol.html" />
+    <link rel="prev" title="Guidance Configuration" href="../user_guide/a_guidance.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html">Polynomials</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="dadk/Solution_SolutionList.html">Optimization Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPolGen.html">Generate Polynomials and Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solvers.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Additional.html">Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Internal.html">Internal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/JupyterTools.html">JupyterTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/Optimizer.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html">REST Service</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Digital Annealer Development Kit</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="digital-annealer-development-kit">
+<h1>Digital Annealer Development Kit<a class="headerlink" href="#digital-annealer-development-kit" title="Link to this heading">#</a></h1>
+<section id="content">
+<h2>Content<a class="headerlink" href="#content" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html">Polynomials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#binpol-binary-polynomials">BinPol - Binary polynomials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol"><code class="docutils literal notranslate"><span class="pre">BinPol</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#define-polynomial-terms">Define polynomial terms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-term">add_term</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#set-term">set_term</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#polynomial-operations">Polynomial operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add">add</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-variable">add_variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-variable-penalty">add_variable_penalty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#clone">clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#inflate-clamped-configuration">inflate_clamped_configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#make-clamped">make_clamped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#multiply">multiply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#multiply-scalar">multiply_scalar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#power">power</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#power2">power2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#operators">Operators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#polynomial-evaluation">Polynomial evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#compute">compute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-weights">get_weights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-json">as_json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-latex">as_latex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-bqm">as_bqm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-qbsolv">as_qbsolv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-hbsolv">as_hbsolv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#as-text">as_text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-json-generator">get_json_generator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#freeze-var-shape-set">freeze_var_shape_set</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#generate-slack-polynomial">generate_slack_polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#make-qubo">make_qubo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#reduce-higher-degree">reduce_higher_degree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#reduce-higher-degree-to-qubo">reduce_higher_degree_to_qubo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#restore">restore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#set-clone-warning-counter">set_CLONE_WARNING_COUNTER</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#experimental">EXPERIMENTAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#calculate-hash">calculate_hash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#plot-histogram">plot_histogram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-normalize-factor">get_normalize_factor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#normalize">normalize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-scale-factor">get_scale_factor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#scale">scale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#sum">sum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#exactly-1-bit-on">exactly_1_bit_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-exactly-1-bit-on">add_exactly_1_bit_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#exactly-n-bits-on">exactly_n_bits_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-exactly-n-bits-on">add_exactly_n_bits_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#most-1-bit-on">most_1_bit_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-most-1-bit-on">add_most_1_bit_on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#load-qbsolv">load_qbsolv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get">get</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-max-abs-coefficient">get_max_abs_coefficient</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol.N"><code class="docutils literal notranslate"><span class="pre">BinPol.N</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol.degree"><code class="docutils literal notranslate"><span class="pre">BinPol.degree</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol.p"><code class="docutils literal notranslate"><span class="pre">BinPol.p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol.size"><code class="docutils literal notranslate"><span class="pre">BinPol.size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol.var_shape_set"><code class="docutils literal notranslate"><span class="pre">BinPol.var_shape_set</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#deprecated">Deprecated</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-slack-variable">add_slack_variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#add-slack-penalty">add_slack_penalty</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#term-products-of-binary-variables">Term - Products of binary variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Term"><code class="docutils literal notranslate"><span class="pre">Term</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-term-compute">compute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-term-as-text">as_text</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#inequality">Inequality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Inequality"><code class="docutils literal notranslate"><span class="pre">Inequality</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id4">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-as-latex">as_latex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-as-text">as_text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-clone">clone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-compute">compute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-make-qubo">make_qubo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-inequality-multiply-scalar">multiply_scalar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id11">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Inequality.lambda_value"><code class="docutils literal notranslate"><span class="pre">Inequality.lambda_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Inequality.qubo"><code class="docutils literal notranslate"><span class="pre">Inequality.qubo</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#twosideinequality-inequality">TwoSideInequality(<span class="xref std std-ref">Inequality</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.TwoSideInequality"><code class="docutils literal notranslate"><span class="pre">TwoSideInequality</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id12">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-twosideinequality-as-latex">as_latex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-twosideinequality-as-text">as_text</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#methods-inequality">Methods (<span class="xref std std-ref">Inequality</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id15">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.TwoSideInequality.left_qubo"><code class="docutils literal notranslate"><span class="pre">TwoSideInequality.left_qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.TwoSideInequality.right_qubo"><code class="docutils literal notranslate"><span class="pre">TwoSideInequality.right_qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.TwoSideInequality.sign"><code class="docutils literal notranslate"><span class="pre">TwoSideInequality.sign</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#properties-inequality">Properties (<span class="xref std std-ref">Inequality</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html#the-binary-search-space">The Binary Search Space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#structured-bit-variables">Structured Bit Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#varshapeset">VarShapeSet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VarShapeSet"><code class="docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id16">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#generate-penalty-polynomial">generate_penalty_polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-bits-of-1w1h-group">get_bits_of_1w1h_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-bits-of-2w1h-group">get_bits_of_2w1h_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-index">get_index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-symbolic">get_symbolic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-terms">get_terms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id17">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VarShapeSet.length"><code class="docutils literal notranslate"><span class="pre">VarShapeSet.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VarShapeSet.one_hot"><code class="docutils literal notranslate"><span class="pre">VarShapeSet.one_hot</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#bitarrayshape">BitArrayShape</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape"><code class="docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id18">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-bitarrayshape-get-index">get_index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-bitarrayshape-get-symbolic">get_symbolic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id21">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape.dimensions"><code class="docutils literal notranslate"><span class="pre">BitArrayShape.dimensions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape.length"><code class="docutils literal notranslate"><span class="pre">BitArrayShape.length</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape.name"><code class="docutils literal notranslate"><span class="pre">BitArrayShape.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape.one_hot"><code class="docutils literal notranslate"><span class="pre">BitArrayShape.one_hot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BitArrayShape.shape"><code class="docutils literal notranslate"><span class="pre">BitArrayShape.shape</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#category-bitarrayshape">Category(<span class="xref std std-ref">BitArrayShape</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id22">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-category-get-index">get_index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-category-get-symbolic">get_symbolic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id25">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Category.values"><code class="docutils literal notranslate"><span class="pre">Category.values</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#properties-bitarrayshape">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variable-bitarrayshape-abc">Variable(<span class="xref std std-ref">BitArrayShape</span>, ABC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#methods-bitarrayshape">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id26">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Variable.start"><code class="docutils literal notranslate"><span class="pre">Variable.start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Variable.step"><code class="docutils literal notranslate"><span class="pre">Variable.step</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.Variable.stop"><code class="docutils literal notranslate"><span class="pre">Variable.stop</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id27">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variablebase10-variable">VariableBase10(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableBase10"><code class="docutils literal notranslate"><span class="pre">VariableBase10</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id28">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#properties-variable">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id29">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variablebinary-variable">VariableBinary(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableBinary"><code class="docutils literal notranslate"><span class="pre">VariableBinary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id30">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id31">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id32">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variablefibonacci-variable">VariableFibonacci(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableFibonacci"><code class="docutils literal notranslate"><span class="pre">VariableFibonacci</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id33">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id34">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id35">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variablelittlegauss-variable">VariableLittlegauss(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableLittlegauss"><code class="docutils literal notranslate"><span class="pre">VariableLittlegauss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id36">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id37">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id38">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variablesequential-variable">VariableSequential(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableSequential"><code class="docutils literal notranslate"><span class="pre">VariableSequential</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id39">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id40">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id41">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#variableunary-variable">VariableUnary(<span class="xref std std-ref">Variable</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VariableUnary"><code class="docutils literal notranslate"><span class="pre">VariableUnary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id42">Methods (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id43">Properties (<span class="xref std std-ref">Variable</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id44">Properties (<span class="xref std std-ref">BitArrayShape</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#partialconfig">PartialConfig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.PartialConfig"><code class="docutils literal notranslate"><span class="pre">PartialConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id45">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk-binpol-partialconfig-as-json">as_json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#create-random-state">create_random_state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#get-bits">get_bits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#set-bit">set_bit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#set-variable">set_variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#is-empty">is_empty</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id47">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.PartialConfig.size"><code class="docutils literal notranslate"><span class="pre">PartialConfig.size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#onehotgroup">OneHotGroup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.OneHotGroup"><code class="docutils literal notranslate"><span class="pre">OneHotGroup</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id48">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.OneHotGroup.entries"><code class="docutils literal notranslate"><span class="pre">OneHotGroup.entries</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#bqp">BQP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BQP"><code class="docutils literal notranslate"><span class="pre">BQP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#classmethods">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#load-hdf5">load_hdf5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#from-qpoly">from_QPoly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#load-json">load_json</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id49">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#save-as-hdf5">save_as_hdf5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#to-qpoly">to_QPoly</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id50">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BQP.inequalities"><code class="docutils literal notranslate"><span class="pre">BQP.inequalities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BQP.penalty_qubo"><code class="docutils literal notranslate"><span class="pre">BQP.penalty_qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BQP.qubo"><code class="docutils literal notranslate"><span class="pre">BQP.qubo</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#slacktype-enum">SlackType(Enum)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.SlackType"><code class="docutils literal notranslate"><span class="pre">SlackType</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html#enums">Enums</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#inequalitysign-enum">InequalitySign(Enum)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.InequalitySign"><code class="docutils literal notranslate"><span class="pre">InequalitySign</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#onehot-enum">OneHot(Enum)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.OneHot"><code class="docutils literal notranslate"><span class="pre">OneHot</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html#warnings">Warnings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#makequbowarning-abc">MakeQuboWarning(ABC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboWarning"><code class="docutils literal notranslate"><span class="pre">MakeQuboWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id51">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboWarning.bit_no"><code class="docutils literal notranslate"><span class="pre">MakeQuboWarning.bit_no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboWarning.index"><code class="docutils literal notranslate"><span class="pre">MakeQuboWarning.index</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#makequbonotusedbitwarning-makequbowarning">MakeQuboNotUsedBitWarning(<span class="xref std std-ref">MakeQuboWarning</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboNotUsedBitWarning"><code class="docutils literal notranslate"><span class="pre">MakeQuboNotUsedBitWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#properties-makequbowarning">Properties (<span class="xref std std-ref">MakeQuboWarning</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#makequboroundedtozerowarning-makequbowarning">MakeQuboRoundedToZeroWarning(<span class="xref std std-ref">MakeQuboWarning</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboRoundedToZeroWarning"><code class="docutils literal notranslate"><span class="pre">MakeQuboRoundedToZeroWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id52">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboRoundedToZeroWarning.coefficient"><code class="docutils literal notranslate"><span class="pre">MakeQuboRoundedToZeroWarning.coefficient</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id53">Properties (<span class="xref std std-ref">MakeQuboWarning</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html#exceptions">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#makequboerror-exception">MakeQuboError(Exception)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.MakeQuboError"><code class="docutils literal notranslate"><span class="pre">MakeQuboError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#qubosizeexceedssolvermaxbits-exception">QUBOSizeExceedsSolverMaxBits(Exception)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.QUBOSizeExceedsSolverMaxBits"><code class="docutils literal notranslate"><span class="pre">QUBOSizeExceedsSolverMaxBits</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#id54">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.QUBOSizeExceedsSolverMaxBits.bits"><code class="docutils literal notranslate"><span class="pre">QUBOSizeExceedsSolverMaxBits.bits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.QUBOSizeExceedsSolverMaxBits.max_bits"><code class="docutils literal notranslate"><span class="pre">QUBOSizeExceedsSolverMaxBits.max_bits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.QUBOSizeExceedsSolverMaxBits.name"><code class="docutils literal notranslate"><span class="pre">QUBOSizeExceedsSolverMaxBits.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html#functions">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#varslack">VarSlack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VarSlack"><code class="docutils literal notranslate"><span class="pre">VarSlack()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#inequalities2crs">inequalities2CRS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.inequalities2CRS"><code class="docutils literal notranslate"><span class="pre">inequalities2CRS()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#qubo2crs">qubo2CRS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.qubo2CRS"><code class="docutils literal notranslate"><span class="pre">qubo2CRS()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#crs2inequalities">crs2Inequalities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.crs2Inequalities"><code class="docutils literal notranslate"><span class="pre">crs2Inequalities()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#crs2qubo">crs2QUBO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.crs2QUBO"><code class="docutils literal notranslate"><span class="pre">crs2QUBO()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#create-rpoly-script">create_rpoly_script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.create_rpoly_script"><code class="docutils literal notranslate"><span class="pre">create_rpoly_script()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPol.html#create-rpoly-hd5">create_rpoly_hd5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.create_rpoly_hd5"><code class="docutils literal notranslate"><span class="pre">create_rpoly_hd5()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/Solution_SolutionList.html">Optimization Solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#bitarray">BitArray</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray"><code class="docutils literal notranslate"><span class="pre">BitArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#draw">draw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#evaluate">evaluate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.call_back"><code class="docutils literal notranslate"><span class="pre">BitArray.call_back</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.name"><code class="docutils literal notranslate"><span class="pre">BitArray.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.shape"><code class="docutils literal notranslate"><span class="pre">BitArray.shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.start"><code class="docutils literal notranslate"><span class="pre">BitArray.start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.step"><code class="docutils literal notranslate"><span class="pre">BitArray.step</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.BitArray.stop"><code class="docutils literal notranslate"><span class="pre">BitArray.stop</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution"><code class="docutils literal notranslate"><span class="pre">Solution</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#classmethods">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#decode">decode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#encode">encode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id1">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk-solution-solutionlist-solution-draw">draw</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#extract-bit-array">extract_bit_array</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id3">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution.configuration"><code class="docutils literal notranslate"><span class="pre">Solution.configuration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution.energy"><code class="docutils literal notranslate"><span class="pre">Solution.energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution.penalty_energy"><code class="docutils literal notranslate"><span class="pre">Solution.penalty_energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution.var_shape_set"><code class="docutils literal notranslate"><span class="pre">Solution.var_shape_set</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#solutionlist">SolutionList</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList"><code class="docutils literal notranslate"><span class="pre">SolutionList</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id4">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk-solution-solutionlist-solutionlist-decode">decode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk-solution-solutionlist-solutionlist-encode">encode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id7">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#get-minimum-energy-solution">get_minimum_energy_solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#get-solution-list">get_solution_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#get-sorted-solution-list">get_sorted_solution_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#get-time">get_time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#get-times">get_times</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#print-progress">print_progress</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id8">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.da_parameter"><code class="docutils literal notranslate"><span class="pre">SolutionList.da_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.graphics_data"><code class="docutils literal notranslate"><span class="pre">SolutionList.graphics_data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.inequalities"><code class="docutils literal notranslate"><span class="pre">SolutionList.inequalities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.min_solution"><code class="docutils literal notranslate"><span class="pre">SolutionList.min_solution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.penalty_qubo"><code class="docutils literal notranslate"><span class="pre">SolutionList.penalty_qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.progress"><code class="docutils literal notranslate"><span class="pre">SolutionList.progress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.qubo"><code class="docutils literal notranslate"><span class="pre">SolutionList.qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.scaling_parameter"><code class="docutils literal notranslate"><span class="pre">SolutionList.scaling_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.solver_times"><code class="docutils literal notranslate"><span class="pre">SolutionList.solver_times</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList.stats_info"><code class="docutils literal notranslate"><span class="pre">SolutionList.stats_info</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#varset">VarSet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.VarSet"><code class="docutils literal notranslate"><span class="pre">VarSet</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id9">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk-solution-solutionlist-varset-extract-bit-array">extract_bit_array</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#progress-list">Progress(list)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Progress"><code class="docutils literal notranslate"><span class="pre">Progress</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Solution_SolutionList.html#progress-entry">Progress.Entry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Progress.Entry"><code class="docutils literal notranslate"><span class="pre">Entry</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Solution_SolutionList.html#id11">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Progress.Entry.energy"><code class="docutils literal notranslate"><span class="pre">Entry.energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Progress.Entry.penalty_energy"><code class="docutils literal notranslate"><span class="pre">Entry.penalty_energy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Progress.Entry.time"><code class="docutils literal notranslate"><span class="pre">Entry.time</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPolGen.html">Generate Polynomials and Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/BinPolGen.html#binpolgen">BinPolGen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPolGen.html#dadk.BinPolGen.BinPolGen"><code class="docutils literal notranslate"><span class="pre">BinPolGen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPolGen.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#gen-latex">gen_latex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#gen-pretty-string">gen_pretty_string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#gen-python">gen_python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#parse-poly">parse_poly</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/BinPolGen.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#dadk.BinPolGen.BinPolGen.source"><code class="docutils literal notranslate"><span class="pre">BinPolGen.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/BinPolGen.html#dadk.BinPolGen.BinPolGen.tree"><code class="docutils literal notranslate"><span class="pre">BinPolGen.tree</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Solvers.html">Solvers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#qubosolverdav3c-restmixin-azureblobmixin-qubosolverbase">QUBOSolverDAv3c(<span class="xref std std-ref">RestMixin</span>, <span class="xref std std-ref">AzureBlobMixin</span>, <span class="xref std std-ref">QUBOSolverBase</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv3c.QUBOSolverDAv3c"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv3c</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#classmethods">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#get-parameter-definitions">get_parameter_definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#max-number-of-bits">max_number_of_bits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#check-da-parameter">check_da_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#minimize">minimize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#methods-restmixin">Methods (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#methods-azureblobmixin">Methods (<span class="xref std std-ref">AzureBlobMixin</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#container">Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#blob">Blob</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#methods-qubosolverbase">Methods (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv3c.QUBOSolverDAv3c.da_parameter"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv3c.da_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv3c.QUBOSolverDAv3c.url"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv3c.url</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#properties-restmixin">Properties (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#properties-qubosolverbase">Properties (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#properties-solverbase">Properties (<span class="xref std std-ref">SolverBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#qubosolverdav4-restmixin-azureblobmixin-qubosolverbase">QUBOSolverDAv4(<span class="xref std std-ref">RestMixin</span>, <span class="xref std std-ref">AzureBlobMixin</span>, <span class="xref std std-ref">QUBOSolverBase</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv4.QUBOSolverDAv4"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv4</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id1">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolverdav4-qubosolverdav4-get-parameter-definitions">get_parameter_definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolverdav4-qubosolverdav4-max-number-of-bits">max_number_of_bits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id4">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolverdav4-qubosolverdav4-check-da-parameter">check_da_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolverdav4-qubosolverdav4-minimize">minimize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id7">Methods (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id8">Methods (<span class="xref std std-ref">AzureBlobMixin</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id9">Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id10">Blob</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id11">Methods (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id12">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv4.QUBOSolverDAv4.da_parameter"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv4.da_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverDAv4.QUBOSolverDAv4.url"><code class="docutils literal notranslate"><span class="pre">QUBOSolverDAv4.url</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id13">Properties (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id14">Properties (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id15">Properties (<span class="xref std std-ref">SolverBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#qubosolvercpu-restmixin-azureblobmixin-qubosolverbase">QUBOSolverCPU(<span class="xref std std-ref">RestMixin</span>, <span class="xref std std-ref">AzureBlobMixin</span>, <span class="xref std std-ref">QUBOSolverBase</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU"><code class="docutils literal notranslate"><span class="pre">QUBOSolverCPU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id16">Classmethods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolvercpu-qubosolvercpu-get-parameter-definitions">get_parameter_definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolvercpu-qubosolvercpu-max-number-of-bits">max_number_of_bits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id19">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolvercpu-qubosolvercpu-check-da-parameter">check_da_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk-qubosolvercpu-qubosolvercpu-minimize">minimize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id22">Methods (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id23">Methods (<span class="xref std std-ref">AzureBlobMixin</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id24">Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id25">Blob</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id26">Methods (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id27">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU.da_parameter"><code class="docutils literal notranslate"><span class="pre">QUBOSolverCPU.da_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU.url"><code class="docutils literal notranslate"><span class="pre">QUBOSolverCPU.url</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id28">Properties (<span class="xref std std-ref">RestMixin</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id29">Properties (<span class="xref std std-ref">QUBOSolverBase</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#id30">Properties (<span class="xref std std-ref">SolverBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#solverfactory">SolverFactory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#create-solver">create_solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#get-solver-ids">get_solver_IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#has-solver">has_solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#register-solver">register_solver</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Solvers.html#qubosolverbase">QUBOSolverBase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#azureblobmixin">AzureBlobMixin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.AzureBlobMixin"><code class="docutils literal notranslate"><span class="pre">AzureBlobMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id31">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#azureblobmixin-blob">AzureBlobMixin.Blob</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.AzureBlobMixin.Blob"><code class="docutils literal notranslate"><span class="pre">Blob</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id32">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#boltzmannsampling-samplingbasis">BoltzmannSampling(<span class="xref std std-ref">SamplingBasis</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.BoltzmannSampling"><code class="docutils literal notranslate"><span class="pre">BoltzmannSampling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#methods-samplingbasis">Methods (<span class="xref std std-ref">SamplingBasis</span>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id33">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#jobstatus">JobStatus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.JobStatus"><code class="docutils literal notranslate"><span class="pre">JobStatus</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id34">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#localminimasampling">LocalMinimaSampling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.LocalMinimaSampling"><code class="docutils literal notranslate"><span class="pre">LocalMinimaSampling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id35">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#paralleltemperingmanagement">ParallelTemperingManagement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.ParallelTemperingManagement"><code class="docutils literal notranslate"><span class="pre">ParallelTemperingManagement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id36">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id37">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#qubosolverbase-solverbase">QUBOSolverBase(<span class="xref std std-ref">SolverBase</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.QUBOSolverBase"><code class="docutils literal notranslate"><span class="pre">QUBOSolverBase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id38">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id39">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id40">Properties (<span class="xref std std-ref">SolverBase</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#replicaexchangemodel">ReplicaExchangeModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.ReplicaExchangeModel"><code class="docutils literal notranslate"><span class="pre">ReplicaExchangeModel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id41">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#replicaexchangemodelfarjump-replicaexchangemodel">ReplicaExchangeModelFarJump(<span class="xref std std-ref">ReplicaExchangeModel</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.ReplicaExchangeModelFarJump"><code class="docutils literal notranslate"><span class="pre">ReplicaExchangeModelFarJump</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#properties-replicaexchangemodel">Properties (<span class="xref std std-ref">ReplicaExchangeModel</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#restmixin">RestMixin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.RestMixin"><code class="docutils literal notranslate"><span class="pre">RestMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id42">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id43">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#samplingbasis-abc">SamplingBasis(ABC)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.SamplingBasis"><code class="docutils literal notranslate"><span class="pre">SamplingBasis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id44">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#solverbase-abc">SolverBase(ABC)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.SolverBase"><code class="docutils literal notranslate"><span class="pre">SolverBase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id45">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#temperaturemodel">TemperatureModel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.TemperatureModel"><code class="docutils literal notranslate"><span class="pre">TemperatureModel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id46">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#temperaturemodelexponential-temperaturemodel">TemperatureModelExponential(<span class="xref std std-ref">TemperatureModel</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.TemperatureModelExponential"><code class="docutils literal notranslate"><span class="pre">TemperatureModelExponential</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#properties-temperaturemodel">Properties (<span class="xref std std-ref">TemperatureModel</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#temperaturemodelhukushima-temperaturemodelexponential">TemperatureModelHukushima(<span class="xref std std-ref">TemperatureModelExponential</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.TemperatureModelHukushima"><code class="docutils literal notranslate"><span class="pre">TemperatureModelHukushima</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id47">Properties (<span class="xref std std-ref">TemperatureModel</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Solvers.html#temperaturemodellinear-temperaturemodel">TemperatureModelLinear(<span class="xref std std-ref">TemperatureModel</span>)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#dadk.QUBOSolverBase.TemperatureModelLinear"><code class="docutils literal notranslate"><span class="pre">TemperatureModelLinear</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Solvers.html#id48">Properties (<span class="xref std std-ref">TemperatureModel</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Additional.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Additional.html#id1">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Additional.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#configuration-2-string">configuration_2_string</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.configuration_2_string"><code class="docutils literal notranslate"><span class="pre">configuration_2_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#dadk-version-check">dadk_version_check</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.dadk_version_check"><code class="docutils literal notranslate"><span class="pre">dadk_version_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#round-to-n">round_to_n</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.round_to_n"><code class="docutils literal notranslate"><span class="pre">round_to_n()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#string-2-configuration">string_2_configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.string_2_configuration"><code class="docutils literal notranslate"><span class="pre">string_2_configuration()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#load-library">load_library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.load_library"><code class="docutils literal notranslate"><span class="pre">load_library()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#merge-dicts">merge_dicts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#math-prod">math_prod</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.math_prod"><code class="docutils literal notranslate"><span class="pre">math_prod()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#i18n-get">i18n_get</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.i18n_get"><code class="docutils literal notranslate"><span class="pre">i18n_get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#file-size-info">file_size_info</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.file_size_info"><code class="docutils literal notranslate"><span class="pre">file_size_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#html-encode">html_encode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.Utils.html_encode"><code class="docutils literal notranslate"><span class="pre">html_encode()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Additional.html#jsontools">JSONTools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#daodecoder">DaoDecoder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.JSONTools.DaoDecoder"><code class="docutils literal notranslate"><span class="pre">DaoDecoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#classmethods">Classmethods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#daoencoder-jsonencoder">DaoEncoder(JSONEncoder)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.JSONTools.DaoEncoder"><code class="docutils literal notranslate"><span class="pre">DaoEncoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#id2">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Additional.html#profileutils">ProfileUtils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#dadk-profileutils-profileutils">ProfileUtils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.ProfileUtils.ProfileUtils"><code class="docutils literal notranslate"><span class="pre">ProfileUtils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#id4">Classmethods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Additional.html#coordinatesutils">CoordinatesUtils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#dadk-utils-coordinatesutils-coordinatesutils">CoordinatesUtils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.utils.CoordinatesUtils.CoordinatesUtils"><code class="docutils literal notranslate"><span class="pre">CoordinatesUtils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#id6">Classmethods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Additional.html#tsputils">TSPUtils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Additional.html#dadk-utils-tsputils-tsputils">TSPUtils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#dadk.utils.TSPUtils.TSPUtils"><code class="docutils literal notranslate"><span class="pre">TSPUtils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Additional.html#id8">Classmethods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Internal.html">Internal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#connectionparameter">ConnectionParameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-connectionparameter-connectionparameter">ConnectionParameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.ConnectionParameter.ConnectionParameter"><code class="docutils literal notranslate"><span class="pre">ConnectionParameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#classmethods">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#methods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#getters-and-setters">Getters and Setters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#load-connection-parameter">load_connection_parameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#dav2parameter">DAv2Parameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#optimizationmethod-enum">OptimizationMethod(Enum)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.DAv2Parameter.OptimizationMethod"><code class="docutils literal notranslate"><span class="pre">OptimizationMethod</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#solutionmode-enum">SolutionMode(Enum)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.DAv2Parameter.SolutionMode"><code class="docutils literal notranslate"><span class="pre">SolutionMode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-dav2parameter-dav2parameter">DAv2Parameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.DAv2Parameter.DAv2Parameter"><code class="docutils literal notranslate"><span class="pre">DAv2Parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id3">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id4">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id5">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id6">Getters and Setters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#dav3cparameter">DAv3cParameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-dav3cparameter-dav3cparameter">DAv3cParameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.DAv3cParameter.DAv3cParameter"><code class="docutils literal notranslate"><span class="pre">DAv3cParameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id8">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id9">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id10">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id11">Getters and Setters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#dav4parameter">DAv4Parameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-dav4parameter-dav4parameter">DAv4Parameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.DAv4Parameter.DAv4Parameter"><code class="docutils literal notranslate"><span class="pre">DAv4Parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id13">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id14">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id15">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id16">Getters and Setters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#graphicsdata">GraphicsData</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-graphicsdata-graphicsdata">GraphicsData</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.GraphicsData.GraphicsData"><code class="docutils literal notranslate"><span class="pre">GraphicsData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id18">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id19">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#samplingparameter">SamplingParameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-samplingparameter-samplingparameter">SamplingParameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.SamplingParameter.SamplingParameter"><code class="docutils literal notranslate"><span class="pre">SamplingParameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id21">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id22">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id23">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#scalingparameter">ScalingParameter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#scalingaction-enum">ScalingAction(Enum)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.ScalingParameter.ScalingAction"><code class="docutils literal notranslate"><span class="pre">ScalingAction</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-scalingparameter-scalingparameter">ScalingParameter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.ScalingParameter.ScalingParameter"><code class="docutils literal notranslate"><span class="pre">ScalingParameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id25">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id26">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id27">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Internal.html#solvertimes">SolverTimes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal.html#dadk-internal-solvertimes-solvertimes">SolverTimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#dadk.internal.SolverTimes.SolverTimes"><code class="docutils literal notranslate"><span class="pre">SolverTimes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id29">Classmethods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Internal.html#id30">Properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/JupyterTools.html">JupyterTools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#cleanupazureblobstorage">CleanupAzureBlobStorage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.CleanupAzureBlobStorage"><code class="docutils literal notranslate"><span class="pre">CleanupAzureBlobStorage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#cleanupjobs">CleanupJobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.CleanupJobs"><code class="docutils literal notranslate"><span class="pre">CleanupJobs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#datetimepicker-widgetboundedintarray">DatetimePicker(<span class="xref std std-ref">WidgetBoundedIntArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.DatetimePicker"><code class="docutils literal notranslate"><span class="pre">DatetimePicker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.DatetimePicker.value"><code class="docutils literal notranslate"><span class="pre">DatetimePicker.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#properties-widgetboundednumberarray">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#properties-widgetnumberarray">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#directoryselector-dropdown">DirectorySelector(Dropdown)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.DirectorySelector"><code class="docutils literal notranslate"><span class="pre">DirectorySelector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-directory">set_directory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id1">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.DirectorySelector.directory"><code class="docutils literal notranslate"><span class="pre">DirectorySelector.directory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.DirectorySelector.relative_directory"><code class="docutils literal notranslate"><span class="pre">DirectorySelector.relative_directory</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#fileselector">FileSelector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.FileSelector"><code class="docutils literal notranslate"><span class="pre">FileSelector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id2">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-value">set_value</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id3">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.FileSelector.file"><code class="docutils literal notranslate"><span class="pre">FileSelector.file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.FileSelector.on_change_code"><code class="docutils literal notranslate"><span class="pre">FileSelector.on_change_code</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.FileSelector.path"><code class="docutils literal notranslate"><span class="pre">FileSelector.path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.FileSelector.value"><code class="docutils literal notranslate"><span class="pre">FileSelector.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#numberplot">NumberPlot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.NumberPlot"><code class="docutils literal notranslate"><span class="pre">NumberPlot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id4">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#add-figure">add_figure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#display-control">display_control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#numbertable">NumberTable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.NumberTable"><code class="docutils literal notranslate"><span class="pre">NumberTable</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id5">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#csv-content">csv_content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#display-content">display_content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#get-summary">get_summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#prepare-content">prepare_content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#text-content">text_content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#update-content">update_content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#sort">sort</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#outputtab">OutputTab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.OutputTab"><code class="docutils literal notranslate"><span class="pre">OutputTab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id6">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#display">display</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-visibility">set_visibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id7">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.OutputTab.tab_out"><code class="docutils literal notranslate"><span class="pre">OutputTab.tab_out</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#paretoplot">ParetoPlot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.ParetoPlot"><code class="docutils literal notranslate"><span class="pre">ParetoPlot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id8">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-paretoplot-add-figure">add_figure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-paretoplot-display-control">display_control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#quboeditor">QuboEditor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.QuboEditor"><code class="docutils literal notranslate"><span class="pre">QuboEditor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#setannealerprofile">SetAnnealerProfile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.SetAnnealerProfile"><code class="docutils literal notranslate"><span class="pre">SetAnnealerProfile</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#taggedguicontrol">TaggedGuiControl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TaggedGuiControl"><code class="docutils literal notranslate"><span class="pre">TaggedGuiControl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id11">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#display-applier">display_applier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#display-creator">display_creator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#update-last-setting">update_last_setting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id12">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TaggedGuiControl.applier"><code class="docutils literal notranslate"><span class="pre">TaggedGuiControl.applier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TaggedGuiControl.creator"><code class="docutils literal notranslate"><span class="pre">TaggedGuiControl.creator</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#timepicker-widgetboundedintarray">TimePicker(<span class="xref std std-ref">WidgetBoundedIntArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TimePicker"><code class="docutils literal notranslate"><span class="pre">TimePicker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id13">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TimePicker.value"><code class="docutils literal notranslate"><span class="pre">TimePicker.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id14">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id15">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#timereporter">TimeReporter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TimeReporter"><code class="docutils literal notranslate"><span class="pre">TimeReporter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id16">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#report-fact">report_fact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#take-time">take_time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id17">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TimeReporter.silent"><code class="docutils literal notranslate"><span class="pre">TimeReporter.silent</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#timetracker">TimeTracker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TimeTracker"><code class="docutils literal notranslate"><span class="pre">TimeTracker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id18">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#add">add</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#close">close</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#traverse2plot">Traverse2Plot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.Traverse2Plot"><code class="docutils literal notranslate"><span class="pre">Traverse2Plot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id19">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-traverse2plot-add-figure">add_figure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-traverse2plot-display-control">display_control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#traverseplot">TraversePlot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.TraversePlot"><code class="docutils literal notranslate"><span class="pre">TraversePlot</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id22">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-traverseplot-add-figure">add_figure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-traverseplot-display-control">display_control</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetboundedfloatarray-widgetboundednumberarray">WidgetBoundedFloatArray(<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedFloatArray"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedFloatArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id25">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id26">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetboundedfloatrange-widgetboundednumberarray">WidgetBoundedFloatRange(<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedFloatRange"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedFloatRange</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id27">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id28">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetboundedintarray-widgetboundednumberarray">WidgetBoundedIntArray(<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedIntArray"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedIntArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id29">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id30">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetboundedintrange-widgetboundednumberarray">WidgetBoundedIntRange(<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedIntRange"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedIntRange</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id31">Properties (<span class="xref std std-ref">WidgetBoundedNumberArray</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id32">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetboundednumberarray-widgetnumberarray">WidgetBoundedNumberArray(<span class="xref std std-ref">WidgetNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedNumberArray"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedNumberArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id33">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedNumberArray.max"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedNumberArray.max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedNumberArray.min"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedNumberArray.min</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetBoundedNumberArray.step"><code class="docutils literal notranslate"><span class="pre">WidgetBoundedNumberArray.step</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id34">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetdefinition-dict">WidgetDefinition(dict)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetDefinition"><code class="docutils literal notranslate"><span class="pre">WidgetDefinition</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetfloatarray-widgetnumberarray">WidgetFloatArray(<span class="xref std std-ref">WidgetNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetFloatArray"><code class="docutils literal notranslate"><span class="pre">WidgetFloatArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id35">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetfloatrange-widgetnumberarray">WidgetFloatRange(<span class="xref std std-ref">WidgetNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetFloatRange"><code class="docutils literal notranslate"><span class="pre">WidgetFloatRange</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id36">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetgui-hbox">WidgetGui(HBox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetGui"><code class="docutils literal notranslate"><span class="pre">WidgetGui</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#staticmethod">Staticmethod</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#register-widget-class">register_widget_class</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id37">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#call-function">call_function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#get-default-setting">get_default_setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#get-persistent-setting">get_persistent_setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#get-value">get_value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#get-widget">get_widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#gui-default-values">gui_default_values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#gui-reset-values">gui_reset_values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#gui-save-values">gui_save_values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-disabled">set_disabled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-persistent-setting">set_persistent_setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk-jupytertools-widgetgui-set-value">set_value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#trigger-change-handlers">trigger_change_handlers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetintarray-widgetnumberarray">WidgetIntArray(<span class="xref std std-ref">WidgetNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetIntArray"><code class="docutils literal notranslate"><span class="pre">WidgetIntArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id39">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetintrange-widgetnumberarray">WidgetIntRange(<span class="xref std std-ref">WidgetNumberArray</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetIntRange"><code class="docutils literal notranslate"><span class="pre">WidgetIntRange</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id40">Properties (<span class="xref std std-ref">WidgetNumberArray</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgetnumberarray-vbox">WidgetNumberArray(VBox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id41">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.columns"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.columns</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.description"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.disabled"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.disabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.headers"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.headers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.label"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.label</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.row_labels"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.row_labels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.rows"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.rows</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.value"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetNumberArray.visible"><code class="docutils literal notranslate"><span class="pre">WidgetNumberArray.visible</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#widgettab-tab">WidgetTab(Tab)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.WidgetTab"><code class="docutils literal notranslate"><span class="pre">WidgetTab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#id42">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#add-tab">add_tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#remove-all-tabs">remove_all_tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#select-tab">select_tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#set-title">set_title</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#parameterlogging-enum">ParameterLogging(Enum)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.ParameterLogging"><code class="docutils literal notranslate"><span class="pre">ParameterLogging</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/JupyterTools.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#get-active-parameters">get_active_parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.get_active_parameters"><code class="docutils literal notranslate"><span class="pre">get_active_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#prolog">prolog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.prolog"><code class="docutils literal notranslate"><span class="pre">prolog()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#activate-output">activate_output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.activate_output"><code class="docutils literal notranslate"><span class="pre">activate_output()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#deactivate-output">deactivate_output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.deactivate_output"><code class="docutils literal notranslate"><span class="pre">deactivate_output()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#debug-exception">debug_exception</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.debug_exception"><code class="docutils literal notranslate"><span class="pre">debug_exception()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#log-msg">log_msg</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.log_msg"><code class="docutils literal notranslate"><span class="pre">log_msg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#print-to-output">print_to_output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.print_to_output"><code class="docutils literal notranslate"><span class="pre">print_to_output()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/JupyterTools.html#register-logging-output">register_logging_output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/JupyterTools.html#dadk.JupyterTools.register_logging_output"><code class="docutils literal notranslate"><span class="pre">register_logging_output()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/Optimizer.html">Optimizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizer-tab">Optimizer(Tab)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer"><code class="docutils literal notranslate"><span class="pre">Optimizer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#create-batch">create_batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#get-results">get_results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#get-widget">get_widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#gui-build">gui_build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#gui-solve">gui_solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#load">load</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#optuna">optuna</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#pareto">pareto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#run">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#select-instance">select_instance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-build-qubo-details-reference">set_build_qubo_details_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-calculated-build-qubo-parameter">set_calculated_build_qubo_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-calculated-solver-parameter">set_calculated_solver_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-compose-model-details-reference">set_compose_model_details_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-fixed-solver-parameter">set_fixed_solver_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-load-details-reference">set_load_details_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-prep-result-details-reference">set_prep_result_details_reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-solver-parameter">set_solver_parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#tab-report">tab_report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#timeseries">timeseries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#properties">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.gui_compose"><code class="docutils literal notranslate"><span class="pre">Optimizer.gui_compose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.gui_load"><code class="docutils literal notranslate"><span class="pre">Optimizer.gui_load</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_build"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_build</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_compose"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_compose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_load"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_load</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_optuna"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_optuna</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_pareto"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_pareto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_solve"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_solve</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_timeseries"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_timeseries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.Optimizer.tab_visualization"><code class="docutils literal notranslate"><span class="pre">Optimizer.tab_visualization</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizermodel-optimizermodelcomplex">OptimizerModel(<span class="xref std std-ref">OptimizerModelComplex</span>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModel"><code class="docutils literal notranslate"><span class="pre">OptimizerModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#methods-optimizermodelcomplex">Methods (<span class="xref std std-ref">OptimizerModelComplex</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#properties-optimizermodelcomplex">Properties (<span class="xref std std-ref">OptimizerModelComplex</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizermodelcomplex">OptimizerModelComplex</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModelComplex"><code class="docutils literal notranslate"><span class="pre">OptimizerModelComplex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id1">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#build-and-solve">build_and_solve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#build-qubo">build_qubo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk-optimizer-optimizermodelcomplex-load">load</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#log">log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#log-data">log_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#prep-result">prep_result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id3">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModelComplex.Optimizer"><code class="docutils literal notranslate"><span class="pre">OptimizerModelComplex.Optimizer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModelComplex.optuna_dirname"><code class="docutils literal notranslate"><span class="pre">OptimizerModelComplex.optuna_dirname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModelComplex.pareto_dirname"><code class="docutils literal notranslate"><span class="pre">OptimizerModelComplex.pareto_dirname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerModelComplex.timeseries_dirname"><code class="docutils literal notranslate"><span class="pre">OptimizerModelComplex.timeseries_dirname</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-settings">OptimizerSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id4">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.annealing_log"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.annealing_log</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.batch"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.batch</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.compose"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.compose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.compose_log"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.compose_log</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.optuna"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.optuna</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.pareto"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.pareto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.solve_dav2"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.solve_dav2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.solve_gui"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.solve_gui</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.timeseries"><code class="docutils literal notranslate"><span class="pre">OptimizerSettings.timeseries</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-annealinglogsettings-settings">OptimizerSettings.AnnealingLogSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id5">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.graphs_figsize"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.graphs_figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.save_graphs"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.save_graphs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.save_graphs_figsize"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.save_graphs_figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.save_times"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.save_times</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.save_times_figsize"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.save_times_figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.times_figsize"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.times_figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.AnnealingLogSettings.values_per_row"><code class="docutils literal notranslate"><span class="pre">AnnealingLogSettings.values_per_row</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-batchsettings-settings">OptimizerSettings.BatchSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.BatchSettings"><code class="docutils literal notranslate"><span class="pre">BatchSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id6">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.BatchSettings.parameter_logging"><code class="docutils literal notranslate"><span class="pre">BatchSettings.parameter_logging</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-composelogsettings-settings">OptimizerSettings.ComposeLogSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeLogSettings"><code class="docutils literal notranslate"><span class="pre">ComposeLogSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id7">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeLogSettings.figsize"><code class="docutils literal notranslate"><span class="pre">ComposeLogSettings.figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeLogSettings.save_graphs"><code class="docutils literal notranslate"><span class="pre">ComposeLogSettings.save_graphs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeLogSettings.save_graphs_figsize"><code class="docutils literal notranslate"><span class="pre">ComposeLogSettings.save_graphs_figsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeLogSettings.values_per_row"><code class="docutils literal notranslate"><span class="pre">ComposeLogSettings.values_per_row</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-composesettings-settings">OptimizerSettings.ComposeSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings"><code class="docutils literal notranslate"><span class="pre">ComposeSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id8">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings.create_summary_excel"><code class="docutils literal notranslate"><span class="pre">ComposeSettings.create_summary_excel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings.excel_summary_columns"><code class="docutils literal notranslate"><span class="pre">ComposeSettings.excel_summary_columns</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings.log_memory_size"><code class="docutils literal notranslate"><span class="pre">ComposeSettings.log_memory_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings.show_summary"><code class="docutils literal notranslate"><span class="pre">ComposeSettings.show_summary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ComposeSettings.summary_columns"><code class="docutils literal notranslate"><span class="pre">ComposeSettings.summary_columns</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-optunasettings-settings">OptimizerSettings.OptunaSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.OptunaSettings"><code class="docutils literal notranslate"><span class="pre">OptunaSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id9">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.OptunaSettings.delete_files"><code class="docutils literal notranslate"><span class="pre">OptunaSettings.delete_files</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-paretosettings-settings">OptimizerSettings.ParetoSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ParetoSettings"><code class="docutils literal notranslate"><span class="pre">ParetoSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id10">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.ParetoSettings.delete_files"><code class="docutils literal notranslate"><span class="pre">ParetoSettings.delete_files</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-solvedav2settings-settings">OptimizerSettings.SolveDAv2Settings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.SolveDAv2Settings"><code class="docutils literal notranslate"><span class="pre">SolveDAv2Settings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id11">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.SolveDAv2Settings.store_graphics"><code class="docutils literal notranslate"><span class="pre">SolveDAv2Settings.store_graphics</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-solveguisettings-settings">OptimizerSettings.SolveGUISettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.SolveGUISettings"><code class="docutils literal notranslate"><span class="pre">SolveGUISettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id12">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.SolveGUISettings.button_width"><code class="docutils literal notranslate"><span class="pre">SolveGUISettings.button_width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.SolveGUISettings.description_width"><code class="docutils literal notranslate"><span class="pre">SolveGUISettings.description_width</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizersettings-timeseriessettings-settings">OptimizerSettings.TimeseriesSettings(_Settings)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.TimeseriesSettings"><code class="docutils literal notranslate"><span class="pre">TimeseriesSettings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id13">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerSettings.TimeseriesSettings.delete_files"><code class="docutils literal notranslate"><span class="pre">TimeseriesSettings.delete_files</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizertab-hbox">OptimizerTab(HBox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerTab"><code class="docutils literal notranslate"><span class="pre">OptimizerTab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id14">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk-optimizer-optimizertab-get-widget">get_widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#set-disabled">set_disabled</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#optimizertabrequirement-enum">OptimizerTabRequirement(Enum)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.OptimizerTabRequirement"><code class="docutils literal notranslate"><span class="pre">OptimizerTabRequirement</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#directorymanager">DirectoryManager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.DirectoryManager"><code class="docutils literal notranslate"><span class="pre">DirectoryManager</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id16">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#copy-to">copy_to</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#count-files">count_files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#create">create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#move-to">move_to</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#read-json-file">read_json_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#read-text-file">read_text_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#remove">remove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#remove-files">remove_files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#write-json-file">write_json_file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#write-text-file">write_text_file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id17">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.DirectoryManager.path"><code class="docutils literal notranslate"><span class="pre">DirectoryManager.path</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dadk/Optimizer.html#interruptkey">InterruptKey</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.InterruptKey"><code class="docutils literal notranslate"><span class="pre">InterruptKey</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id18">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#stop">stop</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dadk/Optimizer.html#id19">Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dadk/Optimizer.html#dadk.Optimizer.InterruptKey.interrupt"><code class="docutils literal notranslate"><span class="pre">InterruptKey.interrupt</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html">REST Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html#quboservicecpu">QUBOServiceCPU</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Flask.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#healthcheck">healthcheck</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceCPU.healthcheck"><code class="docutils literal notranslate"><span class="pre">healthcheck()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#list-jobs">list_jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceCPU.list_jobs"><code class="docutils literal notranslate"><span class="pre">list_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#minimize">minimize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceCPU.minimize"><code class="docutils literal notranslate"><span class="pre">minimize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#delete-job">delete_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceCPU.delete_job"><code class="docutils literal notranslate"><span class="pre">delete_job()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#get-job">get_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceCPU.get_job"><code class="docutils literal notranslate"><span class="pre">get_job()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html#quboservicedav3c">QUBOServiceDAv3c</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Flask.html#id1">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav3c-healthcheck">healthcheck</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv3c.healthcheck"><code class="docutils literal notranslate"><span class="pre">healthcheck()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav3c-list-jobs">list_jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv3c.list_jobs"><code class="docutils literal notranslate"><span class="pre">list_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav3c-minimize">minimize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv3c.minimize"><code class="docutils literal notranslate"><span class="pre">minimize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav3c-delete-job">delete_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv3c.delete_job"><code class="docutils literal notranslate"><span class="pre">delete_job()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav3c-get-job">get_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv3c.get_job"><code class="docutils literal notranslate"><span class="pre">get_job()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html#quboservicedav4">QUBOServiceDAv4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Flask.html#id7">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav4-healthcheck">healthcheck</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv4.healthcheck"><code class="docutils literal notranslate"><span class="pre">healthcheck()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav4-list-jobs">list_jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv4.list_jobs"><code class="docutils literal notranslate"><span class="pre">list_jobs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav4-minimize">minimize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv4.minimize"><code class="docutils literal notranslate"><span class="pre">minimize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav4-delete-job">delete_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv4.delete_job"><code class="docutils literal notranslate"><span class="pre">delete_job()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Flask.html#dadk-flask-quboservicedav4-get-job">get_job</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Flask.html#dadk.flask.QUBOServiceDAv4.get_job"><code class="docutils literal notranslate"><span class="pre">get_job()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../user_guide/a_guidance.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Guidance Configuration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dadk/BinPol.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Polynomials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content">Content</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

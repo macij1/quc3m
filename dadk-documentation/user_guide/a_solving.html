@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Solving Constrained QUBOs &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/a_solving';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guidance Configuration" href="a_guidance.html" />
+    <link rel="prev" title="Constraints" href="a_constraints.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why DADK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk_da.html">DADK and Fujitsu’s Digital Annealer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="b_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_solving.html">Solving QUBOs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="a_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_constraints.html">Constraints</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solving Constrained QUBOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_guidance.html">Guidance Configuration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Solving Constrained QUBOs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="solving-constrained-qubos">
+<h1>Solving Constrained QUBOs<a class="headerlink" href="#solving-constrained-qubos" title="Link to this heading">#</a></h1>
+<p>This section contains code examples for solving different variations of the worker assignment optimization problem
+(using DADK’s <a class="reference internal" href="../api/Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU" title="dadk.QUBOSolverCPU.QUBOSolverCPU"><code class="xref py py-class docutils literal notranslate"><span class="pre">QUBOSolverCPU</span></code></a>), for interpreting the solutions, and some
+modeling advice to improve convergence of the solver.</p>
+<section id="problem-formulation">
+<h2>Problem Formulation<a class="headerlink" href="#problem-formulation" title="Link to this heading">#</a></h2>
+<p>Recall the code for the two different variations of the worker assignment optimization problem as <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a>
+object <code class="docutils literal notranslate"><span class="pre">qubo</span></code> from the previous section.</p>
+<p>With</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">minimize_workers</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>for the first example and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">minimize_workers</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>for the second example, the model parameters as well as <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects for
+both variations are programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadk.BinPol</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+
+<span class="n">shifts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">]</span>
+<span class="n">S</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shifts</span><span class="p">)</span>
+
+<span class="n">workers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Adam1&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob1&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave1&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl1&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam2&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob2&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave2&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob3&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly3&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave3&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl3&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam4&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob4&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly4&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave4&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl4&#39;</span><span class="p">]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">workers</span><span class="p">)</span>
+
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">,</span> <span class="s1">&#39;Adam1&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">)]</span>
+
+<span class="n">constant_bits_x_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">D</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">blocked</span><span class="p">:</span>
+    <span class="n">constant_bits_x_bits</span><span class="p">[</span><span class="n">days</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="n">shifts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">shift</span><span class="p">),</span> <span class="n">workers</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">worker</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">x_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">)</span>
+
+<span class="n">demand</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Monday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Tuesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Wednesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Thursday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Friday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
+
+<span class="k">if</span> <span class="n">minimize_workers</span><span class="p">:</span>
+    <span class="n">constant_bits_y_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">W</span><span class="p">,),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">constant_bits_y_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">W</span><span class="p">,),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="n">y_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_y_bits</span><span class="p">)</span>
+
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="n">x_bit_array_shape</span><span class="p">,</span>
+                            <span class="n">y_bit_array_shape</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that we defined <code class="docutils literal notranslate"><span class="pre">y_bit_array_shape</span></code> for both optimization problems, but set all <span class="math notranslate nohighlight">\(y\)</span> variables to constant one
+in case of the objective to distribute shifts evenly among the workers. In that case, all workers have to be assigned to shifts.
+In the case of <code class="docutils literal notranslate"><span class="pre">minimize_workers</span> <span class="pre">=</span> <span class="pre">False</span></code> dropping the usage of <code class="docutils literal notranslate"><span class="pre">y_bit_array_shape</span></code> along with constant bits,
+would improve the performance.</p>
+</div>
+<p>The code for either of the optimization problems is programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">penalty_qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+        <span class="n">penalty_qubo</span><span class="o">.</span><span class="n">add_exactly_n_bits_on</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">],</span>
+                                           <span class="n">bits</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">)],</span>
+                                           <span class="n">scalar</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+        <span class="n">penalty_qubo</span><span class="o">.</span><span class="n">add_most_1_bit_on</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)],</span>
+                                       <span class="n">scalar</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">minimize_workers</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+                <span class="n">penalty_qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+                <span class="n">penalty_qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+
+    <span class="n">weight</span> <span class="o">=</span> <span class="mi">1800</span>
+    <span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+        <span class="n">qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">nr_shifts_per_worker</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)])</span> <span class="o">/</span> <span class="n">W</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="mi">400</span>
+    <span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+        <span class="n">qubo_tmp</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+        <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">nr_shifts_per_worker</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+                <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+        <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">power2</span><span class="p">()</span>
+        <span class="n">qubo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">qubo_tmp</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We chose to not define the <code class="docutils literal notranslate"><span class="pre">one_hot_groups</span></code> for the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> objects in this
+example. In general, defining <code class="docutils literal notranslate"><span class="pre">one_hot_groups</span></code> whenever possible probably improves convergence of the solver
+since within one hot groups, several bit flips are done in one iteration in order to maintain a state satisfying the
+one hot constraints before and after the iteration. For the examples in this section, there are three out of 15 shifts
+which only require one worker and can therefore be modelled as a one hot group of size <code class="docutils literal notranslate"><span class="pre">W=20</span></code>.</p>
+<p>In the examples, there is no difference in the concrete worker assigned to a shift. Therefore, during the annealing process,
+changing the worker assigned to a shift which is programmed as a one hot group (which can be done in a single iteration)
+often leads to no change in the corresponding same energy value. For shifts which can not be programmed as a one hot group
+exchanging a worker can only be done in two iterations and after the first iteration, the energy value usually has to increase
+since a constraint has to be violated temporarily (after an initial annealing phase).</p>
+<p>The annealing process is a randomized approach in which candidate bit flips with energy decrease or no energy change are much
+more likely than bit flips with energy increase.
+Therefore, using one hot groups in our examples slows down convergence of the solver because the annealing process gets caught
+in changing worker assignments within the one hot groups.</p>
+<p>In general, programming with one hot groups is recommended especially if most or all bits are included in one hot groups.</p>
+</div>
+<p>Inequalities to limit the number of shifts a worker can be assigned to within a week are programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">upper_shift_limit</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">inequalities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="n">tmp_qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="n">upper_shift_limit</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+            <span class="n">tmp_qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+    <span class="n">inequalities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Inequality</span><span class="p">(</span><span class="n">qubo</span><span class="o">=</span><span class="n">tmp_qubo</span><span class="p">,</span> <span class="n">lambda_value</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="choosing-the-solver">
+<h2>Choosing the Solver<a class="headerlink" href="#choosing-the-solver" title="Link to this heading">#</a></h2>
+<p>To solve either of the examples above, we use DADK’s <a class="reference internal" href="../api/Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU" title="dadk.QUBOSolverCPU.QUBOSolverCPU"><code class="xref py py-class docutils literal notranslate"><span class="pre">QUBOSolverCPU</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadk.QUBOSolverCPU</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">QUBOSolverCPU</span><span class="p">(</span><span class="n">number_runs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                       <span class="n">number_iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                       <span class="n">temperature_sampling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># default</span>
+                       <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+                       <span class="n">scaling_action</span><span class="o">=</span><span class="n">ScalingAction</span><span class="o">.</span><span class="n">AUTO_SCALING</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similar as in <a class="reference internal" href="b_solving.html"><span class="doc">Basic Usage - Solving QUBOs</span></a>, the code above defines a <a class="reference internal" href="../api/Solvers.html#dadk.QUBOSolverCPU.QUBOSolverCPU" title="dadk.QUBOSolverCPU.QUBOSolverCPU"><code class="xref py py-class docutils literal notranslate"><span class="pre">QUBOSolverCPU</span></code></a>
+object which does two independent annealing runs (<code class="docutils literal notranslate"><span class="pre">number_runs</span> <span class="pre">=</span> <span class="pre">2</span></code>) with 10000 iterations (<code class="docutils literal notranslate"><span class="pre">number_iterations</span> <span class="pre">=</span> <span class="pre">10000</span></code>) each.
+The temperature settings for the annealing process are again determined automatically but could also have been set manually.
+Temperature decrease happens after every step according to the parameter <code class="docutils literal notranslate"><span class="pre">temperature_interval</span> <span class="pre">=</span> <span class="pre">1</span></code>.
+Again, the parameter <code class="docutils literal notranslate"><span class="pre">offset_increase_rate</span></code> is determined automatically, i.e., when the random walk in the annealing process ends in a local minimum and no candidate can be determined for the
+next step, the energy is increased temporarily and stepwise by <code class="docutils literal notranslate"><span class="pre">offset_increase_rate</span></code>; this accelerates the escape from
+the local minimum. For <code class="docutils literal notranslate"><span class="pre">offset_increase_rate</span> <span class="pre">=</span> <span class="pre">0</span></code> the classical simulated annealing algorithm is applied.
+We have also set a random seed (<code class="docutils literal notranslate"><span class="pre">random_seed</span> <span class="pre">=</span> <span class="pre">42</span></code>) in order to make the solutions reproducible.
+Since for <code class="docutils literal notranslate"><span class="pre">minimize_workers</span> <span class="pre">=</span> <span class="pre">False</span></code> the QUBO contains float values, we use the automatic scaling functionality of the
+dadk and set <code class="docutils literal notranslate"><span class="pre">scaling_action=ScalingAction.AUTO_SCALING</span></code>.</p>
+<p>Either of the examples above is then solved by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution_list</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">qubo</span> <span class="o">+</span> <span class="n">penalty_qubo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>without the inequality constraints or by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution_list</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">qubo</span> <span class="o">+</span> <span class="n">penalty_qubo</span><span class="p">,</span>
+                                <span class="n">inequalities</span><span class="o">=</span><span class="n">inequalities</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with inequality constraints.</p>
+</section>
+<section id="analyzing-and-interpreting-the-solution">
+<h2>Analyzing and Interpreting the Solution<a class="headerlink" href="#analyzing-and-interpreting-the-solution" title="Link to this heading">#</a></h2>
+<p>Both solutions of the two independent runs are part of the <a class="reference internal" href="../api/dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolutionList</span></code></a>
+object which is returned by the method and stored in <code class="docutils literal notranslate"><span class="pre">solution_list</span></code>.</p>
+<p>The <a class="reference internal" href="../api/dadk/Solution_SolutionList.html#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solution</span></code></a> object with minimal energy is extracted by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">solution_list</span><span class="o">.</span><span class="n">min_solution</span>
+</pre></div>
+</div>
+<p>Shift assignments and information about the number of workers which have been assigned shifts can be retrieved and evaluated by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sol_y</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of working workers: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sol_y</span><span class="p">))</span>
+
+<span class="n">sol_x</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">nr_shifts_per_worker</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sol_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shifts per working worker:&#39;</span><span class="p">,</span> <span class="n">nr_shifts_per_worker</span><span class="p">)</span>
+<span class="n">shifts_of_workers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sol_x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">w</span><span class="p">])</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">mean_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([(</span><span class="n">shifts_of_workers</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-</span> <span class="n">nr_shifts_per_worker</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">)</span> <span class="k">if</span> <span class="n">shifts_of_workers</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean quadratic deviation of worker shift numbers from mean number of shifts: &#39;</span><span class="p">,</span> <span class="n">mean_deviation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Without inequalities and <code class="docutils literal notranslate"><span class="pre">minimize_workers</span> <span class="pre">=</span> <span class="pre">True</span></code>, this results in 11 workers which have been at least one assigned shift
+and the mean quadratic deviation of worker shift numbers from the mean number of shifts per working worker is 0.51.
+With additional inequalities, the number of workers which have been assigned at least one shift increases to 12 and the
+mean quadratic deviation of worker shift numbers from the mean number of shifts per working worker is 0.14.</p>
+<p>Without inequalities and <code class="docutils literal notranslate"><span class="pre">minimize_workers</span> <span class="pre">=</span> <span class="pre">False</span></code>, all workers (20) are assigned shifts as a result of the objective.
+The mean quadratic deviation of worker shift numbers from the mean number of shifts per working worker is 0.21.
+With additional inequalities, the solution remains the same, since already without inequalities the maximal number of
+shifts assigned to a worker was three.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A mean quadratic deviation of worker shift numbers of 0.14 from the mean number of shifts per working worker
+has been the best among all tests, even without any direct objective to distribute shifts evenly among the workers.
+This comes from the fact that, in order to minimize the number of working workers, all of the working workers except
+two are assigned the maximal possible number of shifts <code class="docutils literal notranslate"><span class="pre">upper_shift_limit</span> <span class="pre">=</span> <span class="pre">4</span></code>. The other two working workers are
+assigned three shifts which leads to an optimal distribution of shifts among workers. The shifts among the latter two
+workers could also have been distributed differently with a different random seed since even distribution of work among
+workers was not part of the objective.</p>
+<p>The solution for the test with <code class="docutils literal notranslate"><span class="pre">minimize_workers</span> <span class="pre">=</span> <span class="pre">False</span></code> was also optimal for the respective optimization problem
+but was forced to use all the workers by demanding a number of assigned shifts of <code class="docutils literal notranslate"><span class="pre">nr_shifts_per_worker</span> <span class="pre">=</span> <span class="pre">np.sum(A)/W</span></code>
+for each worker in the objective.</p>
+<p>To summarize, in modeling an optimization problem mathematically one has to be very careful in choosing objectives and constraints such
+that the optimal solution of the problem is actually optimal for the original business problem.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="a_constraints.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Constraints</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="a_guidance.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Guidance Configuration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-solver">Choosing the Solver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-and-interpreting-the-solution">Analyzing and Interpreting the Solution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

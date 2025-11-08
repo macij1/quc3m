@@ -1,0 +1,1218 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Optimization Solutions &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/dadk/Solution_SolutionList';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Generate Polynomials and Description" href="BinPolGen.html" />
+    <link rel="prev" title="Polynomials" href="BinPol.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BinPol.html">Polynomials</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Optimization Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BinPolGen.html">Generate Polynomials and Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Solvers.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Additional.html">Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Internal.html">Internal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="JupyterTools.html">JupyterTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimizer.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Flask.html">REST Service</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Digital Annealer Development Kit</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Optimization Solutions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="optimization-solutions">
+<h1>Optimization Solutions<a class="headerlink" href="#optimization-solutions" title="Link to this heading">#</a></h1>
+<section id="bitarray">
+<span id="dadk-solution-solutionlist-bitarray"></span><h2>BitArray<a class="headerlink" href="#bitarray" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.</span></span><span class="sig-name descname"><span class="pre">BitArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_array_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><span class="pre">BitArrayShape</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray" title="Link to this definition">#</a></dt>
+<dd><p>A <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object represents a named and structured variable. The structure is taken from the used <code class="docutils literal notranslate"><span class="pre">bit_array_shape</span></code> of type <a class="reference internal" href="BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.BinPol.BitArrayShape</span></code></a>.
+In addition to these base classes a <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object contains data to represent a value for the variable.
+<a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> objects are typically created as part of the solutions and need not be instantiated by
+dadk users. It provides possibilities for evaluation to translate the result back to business notions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bit_array_shape</strong> (<a class="reference internal" href="BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><em>BitArrayShape</em></a>) – Underlying BitArrayShape object.</p></li>
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data array; should contain values in {0,1}</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<section id="draw">
+<span id="dadk-solution-solutionlist-bitarray-draw"></span><h4>draw<a class="headerlink" href="#draw" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.draw">
+<span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(9.0,</span> <span class="pre">4.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_ax_per_row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplotpars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_offsets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.draw" title="Link to this definition">#</a></dt>
+<dd><p>The bit array is plotted. Red / blue dots stand for bits that are on / off. Constant bit are plotted in light red / blue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figsize</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – Total size of plot area, not the individual sub-plot size.</p></li>
+<li><p><strong>max_ax_per_row</strong> (<em>int</em>) – Number of subplots per row.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title for the graphic figure output.</p></li>
+<li><p><strong>axis_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Names for the axis. Unsorted! Will be resorted based on <code class="docutils literal notranslate"><span class="pre">order</span></code> parameter.</p></li>
+<li><p><strong>order</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – How to resort the multidimensional data. Default is list(range(dimensions)) for example [0,1,2] for 3D-shapes.</p></li>
+<li><p><strong>subplotpars</strong> (<em>Any</em>) – None or object of typ matplotlib.figure.SubplotParams, passed to pyplot.</p></li>
+<li><p><strong>axis_offsets</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – Offset for the axis-ticks. Unsorted! Will be resorted based on <cite>order`</cite> parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="evaluate">
+<span id="dadk-solution-solutionlist-bitarray-evaluate"></span><h4>evaluate<a class="headerlink" href="#evaluate" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.evaluate">
+<span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.evaluate" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray.evaluate" title="dadk.Solution_SolutionList.BitArray.evaluate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.BitArray.evaluate()</span></code></a> is used to apply the
+<a class="reference internal" href="#dadk.Solution_SolutionList.BitArray.call_back" title="dadk.Solution_SolutionList.BitArray.call_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.BitArray.call_back()</span></code></a> function as a method.
+If call_back is None and the bit array object is of a <a class="reference internal" href="BinPol.html#dadk.BinPol.SlackType" title="dadk.BinPol.SlackType"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.BinPol.SlackType</span></code></a> type,
+then <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray.evaluate" title="dadk.Solution_SolutionList.BitArray.evaluate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.BitArray.evaluate()</span></code></a> evaluates the corresponding slack variable.
+Otherwise, call_back is applied for evaluation (see <a class="reference internal" href="BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.BinPol.BitArrayShape</span></code></a> for documentation
+of call_back). <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray.evaluate" title="dadk.Solution_SolutionList.BitArray.evaluate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.BitArray.evaluate()</span></code></a> expects a parameter <cite>data</cite> as well as
+optional keyword parameters if needed for evaluation of call_back.
+If <cite>data</cite> is specified, evaluation is performed on this parameter.
+Otherwise, the attribute data of the object is used for evaluation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – if specified, evaluation is performed on this parameter; dimensions have to match the objects shape attribute</p></li>
+<li><p><strong>kwargs</strong> – keyword parameters which are expected by the function call_back; no keyword arguments are expected for the standard call_back routine of slack variables</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>return of call_back function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[int, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-call-back">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.call_back">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">call_back</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.call_back" title="Link to this definition">#</a></dt>
+<dd><p>The callable <code class="docutils literal notranslate"><span class="pre">call_back</span></code> of the associated <code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code> allows the evaluation of the optimization result. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-name">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.name" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">name</span></code> of this <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-shape">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.shape">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.shape" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">shape</span></code> of this <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-start">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.start">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">start</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.start" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">start</span></code> of this <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object, if it is based on a <code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code> else None. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-step">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.step">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">step</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.step" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">step</span></code> of this <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object, if it is based on a <code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code> else None. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-bitarray-stop">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.BitArray.stop">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">BitArray.</span></span><span class="sig-name descname"><span class="pre">stop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.BitArray.stop" title="Link to this definition">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">stop</span></code> of this <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object, if it is based on a <code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code> else None. (readonly)</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="solution">
+<span id="dadk-solution-solutionlist-solution"></span><h2>Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.</span></span><span class="sig-name descname"><span class="pre">Solution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_shape_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><span class="pre">VarShapeSet</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.Solution" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solution</span></code></a> objects represent a single solution of an optimization. The bit vector in the search space
+(configuration), the energy and the frequency of adoptions within the complete optimization result can be
+retrieved. Solutions are returned as part of a <a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolutionList</span></code></a>.</p>
+<p>This constructor creates a new solution object containing energy, configuration and frequency of a solution
+during the annealing process of a solver on a qubo. Solution object also contains the same variable set as the qubo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>int</em>) – energy of the binary_polynomial at the configuration state</p></li>
+<li><p><strong>penalty_energy</strong> (<em>int</em>) – energy of the penalty_binary_polynomial at the configuration state or None (DAv3 or higher)</p></li>
+<li><p><strong>frequency</strong> (<em>int</em>) – frequency of the configuration during the solution process</p></li>
+<li><p><strong>configuration</strong> (<em>list</em><em>[</em><em>bool</em><em>]</em>) – list with index keys and values in {0,1}. Lists and dictionaries with boolean values
+will be converted to this form.</p></li>
+<li><p><strong>var_shape_set</strong> (<a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><em>VarShapeSet</em></a>) – Variable shape set of the Solution instance</p></li>
+<li><p><strong>runs</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of integer values, declaring in which run the solutions was generated during a single <code class="docutils literal notranslate"><span class="pre">minimize</span></code>-call</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="classmethods">
+<h3>Classmethods<a class="headerlink" href="#classmethods" title="Link to this heading">#</a></h3>
+<section id="decode">
+<span id="dadk-solution-solutionlist-solution-decode"></span><h4>decode<a class="headerlink" href="#decode" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.decode">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.decode" title="Link to this definition">#</a></dt>
+<dd><p>convert json to Solution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Dict</em><em>[</em><em>str</em><em>,</em><em>Any</em><em>]</em>) – the JSON-structure to convert</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>new Solution object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution">Solution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="encode">
+<span id="dadk-solution-solutionlist-solution-encode"></span><h4>encode<a class="headerlink" href="#encode" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.encode">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.encode" title="Link to this definition">#</a></dt>
+<dd><p>convert Solution to json</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><em>Solution</em></a>) – obj to convert to JSON</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary representation of this object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id1">
+<h3>Methods<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="dadk-solution-solutionlist-solution-draw">
+<span id="id2"></span><h4>draw<a class="headerlink" href="#dadk-solution-solutionlist-solution-draw" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.draw">
+<span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_ax_per_row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subplotpars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_offsets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.draw" title="Link to this definition">#</a></dt>
+<dd><p>The bit array is plotted. Red / blue dots stand for bits that are on / off. Constant bit are plotted in light red / blue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the BitArrayShape to draw</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – total size of plot area, not the individual sub-plot size</p></li>
+<li><p><strong>max_ax_per_row</strong> (<em>int</em>) – Number of subplots per row</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title for the graphic figure output</p></li>
+<li><p><strong>axis_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Names for the axis. Unsorted! Will be resorted based on <cite>order</cite> parameter</p></li>
+<li><p><strong>order</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – how to resort the multidimensional data. Default is list(range(dimensions)) for example [0,1,2] for 3D-shapes</p></li>
+<li><p><strong>subplotpars</strong> (<em>Any</em>) – None or object of typ matplotlib.figure.SubplotParams, passed to pyplot</p></li>
+<li><p><strong>axis_offsets</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – Offset for the axis-ticks. Unsorted! Will be resorted based on order parameter</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="extract-bit-array">
+<span id="dadk-solution-solutionlist-solution-extract-bit-array"></span><h4>extract_bit_array<a class="headerlink" href="#extract-bit-array" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.extract_bit_array">
+<span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">extract_bit_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><span class="pre">BitArray</span></a></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.extract_bit_array" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.Solution.extract_bit_array" title="dadk.Solution_SolutionList.Solution.extract_bit_array"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Solution.extract_bit_array()</span></code></a> extracts information on a variable from
+the variable set in form of a <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the variable for which to extract information from the configuration</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bit array containing the information on the given variable in form of a data array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray">dadk.Solution_SolutionList.BitArray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id3">
+<h3>Properties<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<dl class="py property" id="dadk-solution-solutionlist-solution-configuration">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.configuration">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">configuration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.configuration" title="Link to this definition">#</a></dt>
+<dd><p>Bit vector pointing to a certain configuration in the search space.  (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solution-energy">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.energy">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">energy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.energy" title="Link to this definition">#</a></dt>
+<dd><p>The final energy. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solution-penalty-energy">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.penalty_energy">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">penalty_energy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.penalty_energy" title="Link to this definition">#</a></dt>
+<dd><p>Final penalty energy in the solution. Usually this value is stems from the solution of a minimization process
+where a penalty polynomial was given to the solver. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solution-var-shape-set">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Solution.var_shape_set">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Solution.</span></span><span class="sig-name descname"><span class="pre">var_shape_set</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><span class="pre">VarShapeSet</span></a></em><a class="headerlink" href="#dadk.Solution_SolutionList.Solution.var_shape_set" title="Link to this definition">#</a></dt>
+<dd><p>related var_shape_set (readonly)</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="solutionlist">
+<span id="dadk-solution-solutionlist-solutionlist"></span><h2>SolutionList<a class="headerlink" href="#solutionlist" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.</span></span><span class="sig-name descname"><span class="pre">SolutionList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">solutions:</span> <span class="pre">list[~dadk.Solution_SolutionList.Solution]</span> <span class="pre">=</span> <span class="pre">[&lt;dadk.Solution_SolutionList.Solution</span> <span class="pre">object&gt;],</span> <span class="pre">solver_times:</span> <span class="pre">~dadk.internal.SolverTimes.SolverTimes</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">graphics_data:</span> <span class="pre">~dadk.internal.GraphicsData.GraphicsData</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">progress:</span> <span class="pre">~dadk.Solution_SolutionList.Progress</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">qubo:</span> <span class="pre">~dadk.BinPol.BinPol</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">penalty_qubo:</span> <span class="pre">~dadk.BinPol.BinPol</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">inequalities:</span> <span class="pre">list[~dadk.BinPol.Inequality]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">da_parameter:</span> <span class="pre">~typing.Any</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">scaling_parameter:</span> <span class="pre">~dadk.internal.ScalingParameter.ScalingParameter</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.SolutionList</span></code></a> is a helper class used by the solvers to realize objects which
+contain a list of <a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.Solution</span></code></a> objects, time, graphical and statistical
+information during the annealing process</p>
+<p>This constructor creates a new solution list object containing a list of solution objects, time, graphical and
+statistical information of the annealing process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solutions</strong> (<em>list</em><em>[</em><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><em>Solution</em></a><em>]</em>) – list of solution objects during the annealing process</p></li>
+<li><p><strong>solver_times</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../Internal.html#dadk.internal.SolverTimes.SolverTimes" title="dadk.internal.SolverTimes.SolverTimes"><em>SolverTimes</em></a><em>]</em>) – all measured duration during the annealing process</p></li>
+<li><p><strong>graphics_data</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../Internal.html#dadk.internal.GraphicsData.GraphicsData" title="dadk.internal.GraphicsData.GraphicsData"><em>GraphicsData</em></a><em>]</em>) – graphical information of the annealing process such as bit flips</p></li>
+<li><p><strong>progress</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="#dadk.Solution_SolutionList.Progress" title="dadk.Solution_SolutionList.Progress"><em>Progress</em></a><em>]</em>) – progress information of the annealing process (only DAv3+)</p></li>
+<li><p><strong>qubo</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><em>BinPol</em></a><em>]</em>) – the polynomial to be minimized</p></li>
+<li><p><strong>penalty_qubo</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><em>BinPol</em></a><em>]</em>) – the optional penalty polynomial to be minimized (only DAv3+)</p></li>
+<li><p><strong>inequalities</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><a class="reference internal" href="BinPol.html#dadk.BinPol.Inequality" title="dadk.BinPol.Inequality"><em>Inequality</em></a><em>]</em><em>]</em>) – optional additional inequalities (only DAv3+)</p></li>
+<li><p><strong>da_parameter</strong> (<em>Optional</em><em>[</em><em>Any</em><em>]</em>) – annealing parameter used to create this solution</p></li>
+<li><p><strong>scaling_parameter</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../Internal.html#dadk.internal.ScalingParameter.ScalingParameter" title="dadk.internal.ScalingParameter.ScalingParameter"><em>ScalingParameter</em></a><em>]</em>) – scaling parameter used to create this solution</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id4">
+<h3>Classmethods<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="dadk-solution-solutionlist-solutionlist-decode">
+<span id="id5"></span><h4>decode<a class="headerlink" href="#dadk-solution-solutionlist-solutionlist-decode" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.decode">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><span class="pre">SolutionList</span></a></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.decode" title="Link to this definition">#</a></dt>
+<dd><p>convert json to SolutionList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Dict</em><em>[</em><em>str</em><em>,</em><em>Any</em><em>]</em>) – the JSON-structure to convert</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>new SolutionList object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList">SolutionList</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="dadk-solution-solutionlist-solutionlist-encode">
+<span id="id6"></span><h4>encode<a class="headerlink" href="#dadk-solution-solutionlist-solutionlist-encode" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.encode">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><span class="pre">SolutionList</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.encode" title="Link to this definition">#</a></dt>
+<dd><p>convert SolutionList to json</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><em>SolutionList</em></a>) – obj to convert to JSON</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary representation of this object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id7">
+<h3>Methods<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="get-minimum-energy-solution">
+<span id="dadk-solution-solutionlist-solutionlist-get-minimum-energy-solution"></span><h4>get_minimum_energy_solution<a class="headerlink" href="#get-minimum-energy-solution" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.get_minimum_energy_solution">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">get_minimum_energy_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.get_minimum_energy_solution" title="Link to this definition">#</a></dt>
+<dd><p>From the list of solutions a solution with minimum energy is returned. If there are multiple solutions for the
+minimum energy then the first one in the list is returned. If penalty_energy is used in the list, then this is
+the first order sort criterion. Solutions with same penalty_energy are further discriminated by energy as second
+order sort criterion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>solution object in the solution list which has the minimal energy</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution">Solution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="get-solution-list">
+<span id="dadk-solution-solutionlist-solutionlist-get-solution-list"></span><h4>get_solution_list<a class="headerlink" href="#get-solution-list" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.get_solution_list">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">get_solution_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.get_solution_list" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList.get_solution_list" title="dadk.Solution_SolutionList.SolutionList.get_solution_list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.SolutionList.get_solution_list()</span></code></a> returns a copy of the attribute solution list, truncated to the first
+number_of_samples solution objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_samples</strong> (<em>int</em>) – number of solution objects in the list to be returned</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list with number_of_samples solution objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution">Solution</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="get-sorted-solution-list">
+<span id="dadk-solution-solutionlist-solutionlist-get-sorted-solution-list"></span><h4>get_sorted_solution_list<a class="headerlink" href="#get-sorted-solution-list" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">get_sorted_solution_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list" title="dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list()</span></code></a> returns a copy of the
+attribute solution list in which the solution objects are sorted by energy. If penalty_energy is used in the
+list, then this is the first order sort criterion. Solutions with same penalty_energy are further discriminated
+by energy as second order sort criterion. If number_of_samples is set, the list is truncated to the first
+number_of_samples solution objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_samples</strong> (<em>int</em>) – number of solution objects in the list to be returned</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list with number_of_samples solution objects with the minimal energy, sorted by energy</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution">Solution</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="get-time">
+<span id="dadk-solution-solutionlist-solutionlist-get-time"></span><h4>get_time<a class="headerlink" href="#get-time" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.get_time">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">get_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.get_time" title="Link to this definition">#</a></dt>
+<dd><p>Searches for the time entry <code class="docutils literal notranslate"><span class="pre">label</span></code> in the internally stored time information and returns the corresponding value
+or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the entry does not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Label to search for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value associated with the <code class="docutils literal notranslate"><span class="pre">label</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="get-times">
+<span id="dadk-solution-solutionlist-solutionlist-get-times"></span><h4>get_times<a class="headerlink" href="#get-times" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.get_times">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">get_times</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.get_times" title="Link to this definition">#</a></dt>
+<dd><p>Returns a list of time information on the solution process which resulted in the current <a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList" title="dadk.Solution_SolutionList.SolutionList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolutionList</span></code></a> object.
+Time information in the list have the form of a dictionary and present times in a nested way starting on a
+coarse level and unraveling times to the finest documented level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of times as nested dictionaries</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[Dict[str,Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="print-progress">
+<span id="dadk-solution-solutionlist-solutionlist-print-progress"></span><h4>print_progress<a class="headerlink" href="#print-progress" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.print_progress">
+<span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">print_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(9.0,</span> <span class="pre">7.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv_report</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_report</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.print_progress" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.SolutionList.print_progress" title="dadk.Solution_SolutionList.SolutionList.print_progress"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.SolutionList.print_progress()</span></code></a> prints and plots the information which is contained in the progress.
+A table and the corresponding plots showing the energy and penalty energy of the QUBO are shown/plotted as a function of time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figsize</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – size of figure in inch</p></li>
+<li><p><strong>csv_report</strong> (<em>str</em>) – filename for csv data export</p></li>
+<li><p><strong>fig_report</strong> (<em>str</em>) – filename for png data plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>False no progress data found, True progress data found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="id8">
+<h3>Properties<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-da-parameter">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.da_parameter">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">da_parameter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../Internal.html#dadk.internal.DAv2Parameter.DAv2Parameter" title="dadk.internal.DAv2Parameter.DAv2Parameter"><span class="pre">DAv2Parameter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.da_parameter" title="Link to this definition">#</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">da_parameter</span></code> for this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-graphics-data">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.graphics_data">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">graphics_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../Internal.html#dadk.internal.GraphicsData.GraphicsData" title="dadk.internal.GraphicsData.GraphicsData"><span class="pre">GraphicsData</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.graphics_data" title="Link to this definition">#</a></dt>
+<dd><p>The graphics_data of this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-inequalities">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.inequalities">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">inequalities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="BinPol.html#dadk.BinPol.Inequality" title="dadk.BinPol.Inequality"><span class="pre">Inequality</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.inequalities" title="Link to this definition">#</a></dt>
+<dd><p>The list of <a class="reference internal" href="BinPol.html#dadk.BinPol.Inequality" title="dadk.BinPol.Inequality"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.BinPol.Inequality</span></code></a> objects which have been constraints in the optimization which resulted in this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-min-solution">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.min_solution">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">min_solution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><span class="pre">Solution</span></a></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.min_solution" title="Link to this definition">#</a></dt>
+<dd><p>The solution with the lowest energy from this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-penalty-qubo">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.penalty_qubo">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">penalty_qubo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.penalty_qubo" title="Link to this definition">#</a></dt>
+<dd><p>The penalty_qubo of this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-progress">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.progress">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">progress</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dadk.Solution_SolutionList.Progress" title="dadk.Solution_SolutionList.Progress"><span class="pre">Progress</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.progress" title="Link to this definition">#</a></dt>
+<dd><p>The Progress of this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-qubo">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.qubo">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">qubo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.qubo" title="Link to this definition">#</a></dt>
+<dd><p>The qubo of this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-scaling-parameter">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.scaling_parameter">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">scaling_parameter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../Internal.html#dadk.internal.ScalingParameter.ScalingParameter" title="dadk.internal.ScalingParameter.ScalingParameter"><span class="pre">ScalingParameter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.scaling_parameter" title="Link to this definition">#</a></dt>
+<dd><p>The scaling parameters which have been used for the optimization which resulted in this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-solver-times">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.solver_times">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">solver_times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../Internal.html#dadk.internal.SolverTimes.SolverTimes" title="dadk.internal.SolverTimes.SolverTimes"><span class="pre">SolverTimes</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.solver_times" title="Link to this definition">#</a></dt>
+<dd><p>The solver_times for this solution list. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-solutionlist-stats-info">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.SolutionList.stats_info">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SolutionList.</span></span><span class="sig-name descname"><span class="pre">stats_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.SolutionList.stats_info" title="Link to this definition">#</a></dt>
+<dd><p>The stats_info of this solution list. (readonly)</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="varset">
+<span id="dadk-solution-solutionlist-varset"></span><h2>VarSet<a class="headerlink" href="#varset" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.VarSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.</span></span><span class="sig-name descname"><span class="pre">VarSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_shape_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><span class="pre">VarShapeSet</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.VarSet" title="Link to this definition">#</a></dt>
+<dd><p>VarSet, wrapper to create a <a class="reference internal" href="#dadk.Solution_SolutionList.Solution" title="dadk.Solution_SolutionList.Solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solution</span></code></a> based on a configuration and a <a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a>. Only for backward compatibility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configuration</strong> (<em>list</em><em>[</em><em>bool</em><em>]</em>) – list with index keys and values in {0,1}. Lists and dictionaries with boolean values
+will be converted to this form.</p></li>
+<li><p><strong>var_shape_set</strong> (<a class="reference internal" href="BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><em>VarShapeSet</em></a>) – Variable shape set of the Solution instance</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id9">
+<h3>Methods<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="dadk-solution-solutionlist-varset-extract-bit-array">
+<span id="id10"></span><h4>extract_bit_array<a class="headerlink" href="#dadk-solution-solutionlist-varset-extract-bit-array" title="Link to this heading">#</a></h4>
+<dl class="py method">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.VarSet.extract_bit_array">
+<span class="sig-prename descclassname"><span class="pre">VarSet.</span></span><span class="sig-name descname"><span class="pre">extract_bit_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><span class="pre">BitArray</span></a></span></span><a class="headerlink" href="#dadk.Solution_SolutionList.VarSet.extract_bit_array" title="Link to this definition">#</a></dt>
+<dd><p>The method <a class="reference internal" href="#dadk.Solution_SolutionList.VarSet.extract_bit_array" title="dadk.Solution_SolutionList.VarSet.extract_bit_array"><code class="xref py py-meth docutils literal notranslate"><span class="pre">VarSet.extract_bit_array()</span></code></a> extracts information on a variable from
+the variable set in form of a <a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArray</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the variable for which to extract information from the configuration</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bit array containing the information on the given variable in form of a data array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#dadk.Solution_SolutionList.BitArray" title="dadk.Solution_SolutionList.BitArray">dadk.Solution_SolutionList.BitArray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="progress-list">
+<span id="dadk-solution-solutionlist-progress"></span><h2>Progress(list)<a class="headerlink" href="#progress-list" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Progress">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.</span></span><span class="sig-name descname"><span class="pre">Progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.Progress" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#dadk.Solution_SolutionList.Progress" title="dadk.Solution_SolutionList.Progress"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.Progress</span></code></a> represents the progress of the DAv3+ annealing process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>list</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Union</em><em>[</em><em>float</em><em>, </em><em>int</em><em>]</em><em>]</em><em>]</em>) – Progress information send by DAv3+ annealing service.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="progress-entry">
+<span id="dadk-solution-solutionlist-progress-entry"></span><h2>Progress.Entry<a class="headerlink" href="#progress-entry" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Progress.Entry">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.Solution_SolutionList.Progress.</span></span><span class="sig-name descname"><span class="pre">Entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_energy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Solution_SolutionList.Progress.Entry" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#dadk.Solution_SolutionList.Progress.Entry" title="dadk.Solution_SolutionList.Progress.Entry"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.Solution_SolutionList.Progress.Entry</span></code></a> represents a single entry in the progress of the DAv3+ annealing process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em>) – The <code class="docutils literal notranslate"><span class="pre">time</span></code> of this progress entry.</p></li>
+<li><p><strong>energy</strong> (<em>int</em>) – The <code class="docutils literal notranslate"><span class="pre">energy</span></code> of this progress entry.</p></li>
+<li><p><strong>penalty_energy</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – The <code class="docutils literal notranslate"><span class="pre">penalty_energy</span></code> of this progress entry.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id11">
+<h3>Properties<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<dl class="py property" id="dadk-solution-solutionlist-progress-entry-energy">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Progress.Entry.energy">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Entry.</span></span><span class="sig-name descname"><span class="pre">energy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Progress.Entry.energy" title="Link to this definition">#</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">energy</span></code> of this progress entry. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-progress-entry-penalty-energy">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Progress.Entry.penalty_energy">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Entry.</span></span><span class="sig-name descname"><span class="pre">penalty_energy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Progress.Entry.penalty_energy" title="Link to this definition">#</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">penalty_energy</span></code> of this progress entry. (readonly)</p>
+</dd></dl>
+
+<dl class="py property" id="dadk-solution-solutionlist-progress-entry-time">
+<dt class="sig sig-object py" id="dadk.Solution_SolutionList.Progress.Entry.time">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Entry.</span></span><span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dadk.Solution_SolutionList.Progress.Entry.time" title="Link to this definition">#</a></dt>
+<dd><p>The <code class="docutils literal notranslate"><span class="pre">time</span></code> of this progress entry. (readonly)</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="BinPol.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Polynomials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="BinPolGen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generate Polynomials and Description</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitarray">BitArray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray"><code class="docutils literal notranslate"><span class="pre">BitArray</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#draw">draw</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.draw"><code class="docutils literal notranslate"><span class="pre">BitArray.draw()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">evaluate</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.evaluate"><code class="docutils literal notranslate"><span class="pre">BitArray.evaluate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.call_back"><code class="docutils literal notranslate"><span class="pre">BitArray.call_back</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.name"><code class="docutils literal notranslate"><span class="pre">BitArray.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.shape"><code class="docutils literal notranslate"><span class="pre">BitArray.shape</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.start"><code class="docutils literal notranslate"><span class="pre">BitArray.start</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.step"><code class="docutils literal notranslate"><span class="pre">BitArray.step</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.BitArray.stop"><code class="docutils literal notranslate"><span class="pre">BitArray.stop</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution"><code class="docutils literal notranslate"><span class="pre">Solution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classmethods">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decode">decode</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.decode"><code class="docutils literal notranslate"><span class="pre">Solution.decode()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encode">encode</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.encode"><code class="docutils literal notranslate"><span class="pre">Solution.encode()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-solution-solutionlist-solution-draw">draw</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.draw"><code class="docutils literal notranslate"><span class="pre">Solution.draw()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-bit-array">extract_bit_array</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.extract_bit_array"><code class="docutils literal notranslate"><span class="pre">Solution.extract_bit_array()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.configuration"><code class="docutils literal notranslate"><span class="pre">Solution.configuration</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.energy"><code class="docutils literal notranslate"><span class="pre">Solution.energy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.penalty_energy"><code class="docutils literal notranslate"><span class="pre">Solution.penalty_energy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Solution.var_shape_set"><code class="docutils literal notranslate"><span class="pre">Solution.var_shape_set</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutionlist">SolutionList</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList"><code class="docutils literal notranslate"><span class="pre">SolutionList</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-solution-solutionlist-solutionlist-decode">decode</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.decode"><code class="docutils literal notranslate"><span class="pre">SolutionList.decode()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-solution-solutionlist-solutionlist-encode">encode</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.encode"><code class="docutils literal notranslate"><span class="pre">SolutionList.encode()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-minimum-energy-solution">get_minimum_energy_solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.get_minimum_energy_solution"><code class="docutils literal notranslate"><span class="pre">SolutionList.get_minimum_energy_solution()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-solution-list">get_solution_list</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.get_solution_list"><code class="docutils literal notranslate"><span class="pre">SolutionList.get_solution_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-sorted-solution-list">get_sorted_solution_list</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.get_sorted_solution_list"><code class="docutils literal notranslate"><span class="pre">SolutionList.get_sorted_solution_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-time">get_time</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.get_time"><code class="docutils literal notranslate"><span class="pre">SolutionList.get_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-times">get_times</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.get_times"><code class="docutils literal notranslate"><span class="pre">SolutionList.get_times()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#print-progress">print_progress</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.print_progress"><code class="docutils literal notranslate"><span class="pre">SolutionList.print_progress()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.da_parameter"><code class="docutils literal notranslate"><span class="pre">SolutionList.da_parameter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.graphics_data"><code class="docutils literal notranslate"><span class="pre">SolutionList.graphics_data</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.inequalities"><code class="docutils literal notranslate"><span class="pre">SolutionList.inequalities</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.min_solution"><code class="docutils literal notranslate"><span class="pre">SolutionList.min_solution</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.penalty_qubo"><code class="docutils literal notranslate"><span class="pre">SolutionList.penalty_qubo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.progress"><code class="docutils literal notranslate"><span class="pre">SolutionList.progress</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.qubo"><code class="docutils literal notranslate"><span class="pre">SolutionList.qubo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.scaling_parameter"><code class="docutils literal notranslate"><span class="pre">SolutionList.scaling_parameter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.solver_times"><code class="docutils literal notranslate"><span class="pre">SolutionList.solver_times</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.SolutionList.stats_info"><code class="docutils literal notranslate"><span class="pre">SolutionList.stats_info</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varset">VarSet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.VarSet"><code class="docutils literal notranslate"><span class="pre">VarSet</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-solution-solutionlist-varset-extract-bit-array">extract_bit_array</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.VarSet.extract_bit_array"><code class="docutils literal notranslate"><span class="pre">VarSet.extract_bit_array()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-list">Progress(list)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Progress"><code class="docutils literal notranslate"><span class="pre">Progress</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progress-entry">Progress.Entry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Progress.Entry"><code class="docutils literal notranslate"><span class="pre">Entry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Progress.Entry.energy"><code class="docutils literal notranslate"><span class="pre">Entry.energy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Progress.Entry.penalty_energy"><code class="docutils literal notranslate"><span class="pre">Entry.penalty_energy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Solution_SolutionList.Progress.Entry.time"><code class="docutils literal notranslate"><span class="pre">Entry.time</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

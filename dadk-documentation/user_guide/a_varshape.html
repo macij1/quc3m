@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Structured Variables &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/a_varshape';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quadratic Unconstrained Optimization" href="a_qubo.html" />
+    <link rel="prev" title="Solving QUBOs" href="b_solving.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why DADK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk_da.html">DADK and Fujitsu’s Digital Annealer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="b_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_solving.html">Solving QUBOs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_constraints.html">Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_solving.html">Solving Constrained QUBOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_guidance.html">Guidance Configuration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Structured Variables</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="structured-variables">
+<h1>Structured Variables<a class="headerlink" href="#structured-variables" title="Link to this heading">#</a></h1>
+<p>For a very basic example, you learned in the <a class="reference internal" href="b_varshape.html"><span class="doc">Basic Usage - Structured Variables</span></a> section that the
+DADK provides the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> class to keep structured variables from the
+mathematical problem formulation also on the programming side.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The real power of <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> lies in the internal organization and mapping
+of symbolic variable indices to one dimensional bit indices which then are provided to the Digital Annealer.
+<strong>This way, the DADK takes complicated bit maps or index calculations away from the user.</strong></p>
+</div>
+<p>Such index mappings become even more complicated if the data for an optimization problem prescribe certain values
+for a subset of variables (constant bits) or if the problem includes so-called one-hot constraints.
+Both topics are covered in this section along the lines of an example, where workers need to be assigned to shifts.</p>
+<section id="example-problem">
+<span id="rst-exprob"></span><h2>Example Problem<a class="headerlink" href="#example-problem" title="Link to this heading">#</a></h2>
+<p>Consider a scenario in which shifts <span class="math notranslate nohighlight">\(s\in \mathcal{S}:=\{0,\ldots,S-1\}\)</span> for each day <span class="math notranslate nohighlight">\(d\in \mathcal{D}:=\{0,\ldots,D-1\}\)</span>
+have to be assigned to workers <span class="math notranslate nohighlight">\(w\in \mathcal{W}:=\{0,\ldots,W-1\}\)</span>.
+Furthermore, each shift <span class="math notranslate nohighlight">\(s\in \mathcal{S}\)</span> of day <span class="math notranslate nohighlight">\(d\in \mathcal{D}\)</span> has a required number of workers <span class="math notranslate nohighlight">\(a_{d,s}\)</span>.
+Objectives could be to minimize the overall number of workers or to split the work evenly among the workers. Additional
+restrictions can be a maximal number of shifts per worker per week or similar constraints.
+This optimization task can be modeled with variables</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} x_{d,s,w} = \left\lbrace\begin{matrix}  1, &amp;\text{if worker } w \text{ works in shift } s \text{ on day } d, \\ 0, &amp;\text{ else,}
+\end{matrix}
+\right.
+\end{equation}\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} y_{w} = \left\lbrace\begin{matrix}  1, &amp;\text{if worker } w \text{ works at all}, \\ 0, &amp;\text{ else.}
+\end{matrix}
+\right.
+\end{equation}\)</span></p>
+<p>Suppose that some workers have asked for one or more free shifts. All those requests are stored in a set
+<span class="math notranslate nohighlight">\(\mathcal{blocked} \subset \mathcal{D} \times \mathcal{S} \times \mathcal{W}\)</span>. We already know that bits
+<span class="math notranslate nohighlight">\(x_{d,s,w}\)</span> with <span class="math notranslate nohighlight">\((d,s,w)\in \mathcal{blocked}\)</span> have to be zero. In order to formulate the optimization
+task with the least possible number of bits, these bits should not be part of the QUBO and can be saved.
+The DADK supports this by defining so-called constant bits.</p>
+</section>
+<section id="constant-bits">
+<h2>Constant Bits<a class="headerlink" href="#constant-bits" title="Link to this heading">#</a></h2>
+<p>Having defined the lists of <code class="docutils literal notranslate"><span class="pre">days</span></code>, <code class="docutils literal notranslate"><span class="pre">shifts</span></code>, <code class="docutils literal notranslate"><span class="pre">workers</span></code> and <code class="docutils literal notranslate"><span class="pre">blocked</span></code>, we program a
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> with constant bits as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadk.BinPol</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+
+<span class="n">shifts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">]</span>
+<span class="n">S</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shifts</span><span class="p">)</span>
+
+<span class="n">workers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Adam1&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob1&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave1&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl1&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam2&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob2&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave2&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob3&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly3&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave3&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl3&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam4&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob4&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly4&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave4&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl4&#39;</span><span class="p">]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">workers</span><span class="p">)</span>
+
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">,</span> <span class="s1">&#39;Adam1&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">)]</span>
+
+<span class="n">constant_bits_x_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">D</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">blocked</span><span class="p">:</span>
+    <span class="n">constant_bits_x_bits</span><span class="p">[</span><span class="n">days</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="n">shifts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">shift</span><span class="p">),</span> <span class="n">workers</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">worker</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">x_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">constant_bits_x_bits</span></code> is a numpy array with the same shape as <code class="docutils literal notranslate"><span class="pre">x_bit_array_shape</span></code>. It contains a -1 for each
+index of <code class="docutils literal notranslate"><span class="pre">x_bit_array_shape</span></code> for which the corresponding bit should be part of the QUBO (i.e. flippable), 0 if the bit
+should be fixed to 0, and 1 if the bit should be fixed to 1.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Also bits which have been assigned a constant value can be included in the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> object.
+The DADK takes care of linearizing quadratic terms which include one constant bit which is 1 and one flippable bit,
+dropping terms which include constant bits which are zero and of incorporating terms which consist solely of constant
+bits into the constant term of the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> object.</p>
+</div>
+</section>
+<section id="one-hot-groups">
+<h2>One Hot Groups<a class="headerlink" href="#one-hot-groups" title="Link to this heading">#</a></h2>
+<p>Suppose the dictionary <code class="docutils literal notranslate"><span class="pre">demand</span></code> contains the required number of workers of the respective days and shifts.
+It might be the case that some days and shifts require exactly one worker.
+Digital Annealer supports such constraints by a concept called one hot group and in this case one way one hot group.
+In particular, specifying one hot groups whenever possible improves convergence of the Digital Annealer.
+Also the DADK supports the one hot functionality by the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.OneHotGroup" title="dadk.BinPol.OneHotGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotGroup</span></code></a> class on the symbolic level
+and as for constant bits DADK handles all the logic for bit index mapping and sorting internally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to defining one hot groups in the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> object, corresponding
+one hot constraints have to be added to the QUBO, see <a class="reference internal" href="a_qubo.html"><span class="doc">Quadratic Unconstrained Optimization</span></a>.</p>
+</div>
+<p>One hot groups are sets of bits which can be specified as collection of single bits <code class="docutils literal notranslate"><span class="pre">('x',</span> <span class="pre">d,</span> <span class="pre">s,</span> <span class="pre">w)</span></code> or
+sets of bits <code class="docutils literal notranslate"><span class="pre">('x',</span> <span class="pre">d,</span> <span class="pre">s,</span> <span class="pre">None)</span></code>.
+In the second formulation we fix the first and second index as <code class="docutils literal notranslate"><span class="pre">d</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span></code> while the third index
+may assume every possible value of the worker dimension. For full description see
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.OneHotGroup" title="dadk.BinPol.OneHotGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotGroup</span></code></a>.</p>
+<p>In our example, we define one hot groups over workers for the respective days and shifts by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">demand</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Monday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Tuesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Wednesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Thursday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Friday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
+
+<span class="n">one_hot_groups_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">OneHotGroup</span><span class="p">((</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+                       <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+                       <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)</span>
+                       <span class="k">if</span> <span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Here, on day <span class="math notranslate nohighlight">\(Tuesday\)</span> and <span class="math notranslate nohighlight">\(Thursday\)</span>, shift <span class="math notranslate nohighlight">\(Early\)</span> require just one worker. The same applies for
+<span class="math notranslate nohighlight">\(Friday\)</span> <span class="math notranslate nohighlight">\(Night\)</span>.</p>
+</section>
+<section id="varshapeset">
+<h2>VarShapeSet<a class="headerlink" href="#varshapeset" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> for the <a class="reference internal" href="#rst-exprob"><span class="std std-ref">Example Problem</span></a> is then implemented as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,))</span>
+
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="n">x_bit_array_shape</span><span class="p">,</span>
+                            <span class="n">y_bit_array_shape</span><span class="p">,</span>
+                            <span class="n">one_hot_groups</span><span class="o">=</span><span class="n">one_hot_groups_list</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When the problem formulation (as in this case) requires multiple decision variables, each with their own
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a>, the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects
+can also be provided to <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> via a list which needs to be unpacked
+see <code class="docutils literal notranslate"><span class="pre">*[x_bit_array_shape,</span> <span class="pre">y_bit_array_shape]</span></code> in the code below. This is especially useful when many
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects are used and in addition when the number of
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects is dynamically changing, e.g., based on varying input
+data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,))</span>
+
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x_bit_array_shape</span><span class="p">,</span> <span class="n">y_bit_array_shape</span><span class="p">],</span>
+                            <span class="n">one_hot_groups</span><span class="o">=</span><span class="n">one_hot_groups_list</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Furthermore, it often makes sense to formulate decision variable definitions using several
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects which have less dimensions.
+For the example of worker assignment, there are only few one hot groups (specifically only one worker for shifts
+<span class="math notranslate nohighlight">\(Tuesday, Early\)</span>, <span class="math notranslate nohighlight">\(Thursday, Early\)</span>, and <span class="math notranslate nohighlight">\(Friday, Night\)</span>). We can already implement all
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects including the correct one hot group definition.
+In our example, we define a <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> object and a constant bit array for each
+shift and day and program the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> as follows. Note that we can now assign a
+unique name to each decision variable of the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> object. Here, we
+reference the specific day and shift as an index of the decision variable name and have
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> objects with one-dimensional index referring to the worker. This is
+very helpful, compared to before, where the index of the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BitArrayShape" title="dadk.BinPol.BitArrayShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">BitArrayShape</span></code></a> object had
+three dimensions, corresponding to day, shift, worker.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_bit_array_shape_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+        <span class="n">constant_bits_x_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">W</span><span class="p">,),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">worker</span><span class="p">)</span> <span class="ow">in</span> <span class="n">blocked</span><span class="p">:</span>
+                <span class="n">constant_bits_x_bits</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">x_bit_array_shape_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;x_</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                                        <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">,</span>
+                                                        <span class="n">one_hot</span><span class="o">=</span><span class="n">OneHot</span><span class="o">.</span><span class="n">one_way</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_bit_array_shape_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;x_</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                                        <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">))</span>
+<span class="n">y_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,))</span>
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="o">*</span><span class="n">x_bit_array_shape_list</span><span class="p">,</span> <span class="n">y_bit_array_shape</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the special case of all values in <code class="docutils literal notranslate"><span class="pre">demand</span></code> one, one hot groups in <code class="docutils literal notranslate"><span class="pre">x_bit_array_shape</span></code> can be defined as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">constant_bits_x_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">D</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">blocked</span><span class="p">:</span>
+    <span class="n">constant_bits_x_bits</span><span class="p">[</span><span class="n">days</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="n">shifts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">shift</span><span class="p">),</span> <span class="n">workers</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">worker</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+                                  <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">,</span>
+                                  <span class="n">one_hot</span><span class="o">=</span><span class="n">OneHot</span><span class="o">.</span><span class="n">one_way</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, a one way one hot group is defined for each entry in the first two dimensions of <code class="docutils literal notranslate"><span class="pre">x_bit_array_shape</span></code>
+over the last dimension, i.e., for each day and shift over all workers, which is exactly what we want.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="b_solving.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solving QUBOs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="a_qubo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quadratic Unconstrained Optimization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problem">Example Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-bits">Constant Bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-groups">One Hot Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varshapeset">VarShapeSet</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

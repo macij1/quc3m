@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Utils &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/Additional';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Internal" href="Internal.html" />
+    <link rel="prev" title="Solvers" href="Solvers.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPol.html">Polynomials</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="dadk/Solution_SolutionList.html">Optimization Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/BinPolGen.html">Generate Polynomials and Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solvers.html">Solvers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Internal.html">Internal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/JupyterTools.html">JupyterTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk/Optimizer.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Flask.html">REST Service</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Digital Annealer Development Kit</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Utils</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Link to this heading">#</a></h1>
+</section>
+<section id="id1">
+<h1>Utils<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<section id="configuration-2-string">
+<span id="dadk-utils-configuration-2-string"></span><h3>configuration_2_string<a class="headerlink" href="#configuration-2-string" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.configuration_2_string">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">configuration_2_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#dadk.Utils.configuration_2_string" title="Link to this definition">#</a></dt>
+<dd><p>Convert configuration into hex-encodes string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>configuration</strong> (<em>list</em><em>[</em><em>bool</em><em>]</em>) – configuration as list of bool.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>configuration in string format</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="dadk-version-check">
+<span id="dadk-utils-dadk-version-check"></span><h3>dadk_version_check<a class="headerlink" href="#dadk-version-check" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.dadk_version_check">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">dadk_version_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_dadk_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.Utils.dadk_version_check" title="Link to this definition">#</a></dt>
+<dd><p>This function can be used to check if the installed dadk version is at least as old as min_dadk_version.
+Exception raised if current dadk version &lt; min_dadk_version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>min_dadk_version</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>...</em><em>]</em>) – Tuple of ints containing the date in the form (YYYY, MM, DD).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="round-to-n">
+<span id="dadk-utils-round-to-n"></span><h3>round_to_n<a class="headerlink" href="#round-to-n" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.round_to_n">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">round_to_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#dadk.Utils.round_to_n" title="Link to this definition">#</a></dt>
+<dd><p>Round float value to given significant number of digits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – given value</p></li>
+<li><p><strong>digits</strong> (<em>int</em>) – number of significant digits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>rounded value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="string-2-configuration">
+<span id="dadk-utils-string-2-configuration"></span><h3>string_2_configuration<a class="headerlink" href="#string-2-configuration" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.string_2_configuration">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">string_2_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Utils.string_2_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Convert hex-encodes string back to configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>str</em>) – configuration as hex-encoded string.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>configuration in normalized format</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="load-library">
+<span id="dadk-utils-load-library"></span><h3>load_library<a class="headerlink" href="#load-library" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.load_library">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">load_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ctypes._DLLT</span></span></span><a class="headerlink" href="#dadk.Utils.load_library" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Load an external library.</dt><dd><ul class="simple">
+<li><p>Linux: ‘.so’ file</p></li>
+<li><p>Windows ‘.dll’ file</p></li>
+<li><p>Darwin ‘.dylib’ file</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> (<em>str</em>) – Name of the directory where the library is located.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – Name of the library, without ‘.so’, ‘.dll’ or ‘.dylib.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Loaded library</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ctypes._DLLT</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="merge-dicts">
+<span id="dadk-utils-merge-dicts"></span><h3>merge_dicts<a class="headerlink" href="#merge-dicts" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.merge_dicts">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">merge_dicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">dictionaries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.Utils.merge_dicts" title="Link to this definition">#</a></dt>
+<dd><p>Given any number of dictionaries, shallow copy and merge into a new dict,
+precedence goes to key value pairs in latter dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dictionaries</strong> (<em>Dict</em><em>[</em><em>Any</em><em>, </em><em>Any</em><em>]</em>) – List of dictionaries</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Merged dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[Any, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="math-prod">
+<span id="dadk-utils-math-prod"></span><h3>math_prod<a class="headerlink" href="#math-prod" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.math_prod">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">math_prod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#dadk.Utils.math_prod" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the product of all the elements in the input iterable. The start value for the product is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>list</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>]</em>) – List of values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[int, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="i18n-get">
+<span id="dadk-utils-i18n-get"></span><h3>i18n_get<a class="headerlink" href="#i18n-get" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.i18n_get">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">i18n_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#dadk.Utils.i18n_get" title="Link to this definition">#</a></dt>
+<dd><p>Read a value from the translation yaml file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – Name of the entry.</p></li>
+<li><p><strong>sub_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Optional name ob the sub-entry (below name)</p></li>
+<li><p><strong>default</strong> (<em>Optional</em><em>[</em><em>Any</em><em>]</em>) – Optional default value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value from the yaml file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="file-size-info">
+<span id="dadk-utils-file-size-info"></span><h3>file_size_info<a class="headerlink" href="#file-size-info" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.file_size_info">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">file_size_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#dadk.Utils.file_size_info" title="Link to this definition">#</a></dt>
+<dd><p>Convert the given <code class="docutils literal notranslate"><span class="pre">size</span></code> of a file in a more readable format. For example 2,621,440 will be converted to “2.6MB”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – Filesize in Bytes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filesize as a human-readable string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="html-encode">
+<span id="dadk-utils-html-encode"></span><h3>html_encode<a class="headerlink" href="#html-encode" title="Link to this heading">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="dadk.Utils.html_encode">
+<span class="sig-prename descclassname"><span class="pre">dadk.Utils.</span></span><span class="sig-name descname"><span class="pre">html_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#dadk.Utils.html_encode" title="Link to this definition">#</a></dt>
+<dd><p>convert all special character like ‘”’, ‘&lt;’ and ‘&gt;’ in the input string to their html entities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – input string to encode.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>encoded string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="jsontools">
+<h2>JSONTools<a class="headerlink" href="#jsontools" title="Link to this heading">#</a></h2>
+<section id="daodecoder">
+<span id="dadk-jsontools-daodecoder"></span><h3>DaoDecoder<a class="headerlink" href="#daodecoder" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoDecoder">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.JSONTools.</span></span><span class="sig-name descname"><span class="pre">DaoDecoder</span></span><a class="headerlink" href="#dadk.JSONTools.DaoDecoder" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">DaoDecoder</span></code> provides methods to convert a JSON document back into DADK-objects.</p>
+</dd></dl>
+
+<section id="classmethods">
+<h4>Classmethods<a class="headerlink" href="#classmethods" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-jsontools-daodecoder-object-hook">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoDecoder.object_hook">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DaoDecoder.</span></span><span class="sig-name descname"><span class="pre">object_hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#dadk.JSONTools.DaoDecoder.object_hook" title="Link to this definition">#</a></dt>
+<dd><p>Main method that is called by json for each entry in the parsed object-tree to convert the entry into the corresponding registered object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – the JSON-structure to convert</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>new object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-jsontools-daodecoder-register-decoder">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoDecoder.register_decoder">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DaoDecoder.</span></span><span class="sig-name descname"><span class="pre">register_decoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registered_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoder_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.JSONTools.DaoDecoder.register_decoder" title="Link to this definition">#</a></dt>
+<dd><p>The method registers a custom decoder <code class="docutils literal notranslate"><span class="pre">decoder_class</span></code> class under the name <code class="docutils literal notranslate"><span class="pre">registered_name</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">registered_name</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> the decoder is registered under its class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registered_name</strong> (<em>str</em>) – name of decoder in registry.</p></li>
+<li><p><strong>decoder_class</strong> (<em>Any</em>) – Decoder to be registered</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-jsontools-daodecoder-register-function">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoDecoder.register_function">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DaoDecoder.</span></span><span class="sig-name descname"><span class="pre">register_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registered_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.JSONTools.DaoDecoder.register_function" title="Link to this definition">#</a></dt>
+<dd><p>The method registers a custom decoder-function <code class="docutils literal notranslate"><span class="pre">registered_function</span></code> under the name <code class="docutils literal notranslate"><span class="pre">registered_name</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">registered_function</span></code> decodes objects of a specific class. The fully qualified classname of that class
+should be specified as <code class="docutils literal notranslate"><span class="pre">registered_name</span></code> according to the encoding of the class,
+see <a class="reference internal" href="#dadk.JSONTools.DaoEncoder.register_function" title="dadk.JSONTools.DaoEncoder.register_function"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dadk.JSONTools.DaoEncoder.register_function()</span></code></a>. The very only parameter of
+the function is a dictionary of the same structure that the encoder produced. If there are attributes with
+other encoded classes as values, those are already transformed into the appropriate objects. The function
+should return an instance of the class with the decoded content of the given dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registered_name</strong> (<em>str</em>) – name of decoder in registry.</p></li>
+<li><p><strong>registered_function</strong> (<em>Callable</em>) – Function to be registered</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="daoencoder-jsonencoder">
+<span id="dadk-jsontools-daoencoder"></span><h3>DaoEncoder(JSONEncoder)<a class="headerlink" href="#daoencoder-jsonencoder" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoEncoder">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.JSONTools.</span></span><span class="sig-name descname"><span class="pre">DaoEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.JSONTools.DaoEncoder" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#dadk.JSONTools.DaoEncoder" title="dadk.JSONTools.DaoEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">DaoEncoder</span></code></a> provides methods to convert DADK-objects into json document.</p>
+<p>Constructor for JSONEncoder, with sensible defaults.</p>
+<p>If skipkeys is false, then it is a TypeError to attempt
+encoding of keys that are not str, int, float or None.  If
+skipkeys is True, such items are simply skipped.</p>
+<p>If ensure_ascii is true, the output is guaranteed to be str
+objects with all incoming non-ASCII characters escaped.  If
+ensure_ascii is false, the output can contain non-ASCII characters.</p>
+<p>If check_circular is true, then lists, dicts, and custom encoded
+objects will be checked for circular references during encoding to
+prevent an infinite recursion (which would cause an RecursionError).
+Otherwise, no such check takes place.</p>
+<p>If allow_nan is true, then NaN, Infinity, and -Infinity will be
+encoded as such.  This behavior is not JSON specification compliant,
+but is consistent with most JavaScript based encoders and decoders.
+Otherwise, it will be a ValueError to encode such floats.</p>
+<p>If sort_keys is true, then the output of dictionaries will be
+sorted by key; this is useful for regression tests to ensure
+that JSON serializations can be compared on a day-to-day basis.</p>
+<p>If indent is a non-negative integer, then JSON array
+elements and object members will be pretty-printed with that
+indent level.  An indent level of 0 will only insert newlines.
+None is the most compact representation.</p>
+<p>If specified, separators should be an (item_separator, key_separator)
+tuple.  The default is (’, ‘, ‘: ‘) if <em>indent</em> is <code class="docutils literal notranslate"><span class="pre">None</span></code> and
+(‘,’, ‘: ‘) otherwise.  To get the most compact JSON representation,
+you should specify (‘,’, ‘:’) to eliminate whitespace.</p>
+<p>If specified, default is a function that gets called for objects
+that can’t otherwise be serialized.  It should return a JSON encodable
+version of the object or raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+</dd></dl>
+
+<section id="id2">
+<h4>Classmethods<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-jsontools-daoencoder-register-encoder">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoEncoder.register_encoder">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DaoEncoder.</span></span><span class="sig-name descname"><span class="pre">register_encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clazz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.JSONTools.DaoEncoder.register_encoder" title="Link to this definition">#</a></dt>
+<dd><p>The method registers a custom encoder <code class="docutils literal notranslate"><span class="pre">encoder_class</span></code> class under the class <code class="docutils literal notranslate"><span class="pre">clazz</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clazz</strong> (<em>Any</em>) – Class for which this encoder should be used.</p></li>
+<li><p><strong>encoder_class</strong> (<em>Any</em>) – Encoder to be registered</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-jsontools-daoencoder-register-function">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoEncoder.register_function">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DaoEncoder.</span></span><span class="sig-name descname"><span class="pre">register_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registered_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.JSONTools.DaoEncoder.register_function" title="Link to this definition">#</a></dt>
+<dd><p>The method registers a custom encoder-function <code class="docutils literal notranslate"><span class="pre">registered_function</span></code> under the name <code class="docutils literal notranslate"><span class="pre">registered_name</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">registered_function</span></code> encodes objects of a specific class. The fully qualified classname of that class
+has to be specified as <code class="docutils literal notranslate"><span class="pre">registered_name</span></code>. The very only parameter of the function is an object instance to
+be encoded. The function returns a dictionary. The dictionary has to contain an attribute <code class="docutils literal notranslate"><span class="pre">&quot;__class__&quot;</span></code> with
+fully qualified class name of the encoded class as value. To encode the content of the object the dictionary can
+contain any collection of further attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registered_name</strong> (<em>str</em>) – name of function in registry.</p></li>
+<li><p><strong>registered_function</strong> (<em>Callable</em>) – Function to be registered</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-jsontools-daoencoder-default">
+<dt class="sig sig-object py" id="dadk.JSONTools.DaoEncoder.default">
+<span class="sig-prename descclassname"><span class="pre">DaoEncoder.</span></span><span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.JSONTools.DaoEncoder.default" title="Link to this definition">#</a></dt>
+<dd><p>Method for converting an object to JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>Any</em>) – Object to convert to JSON</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary representation of this object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="profileutils">
+<h2>ProfileUtils<a class="headerlink" href="#profileutils" title="Link to this heading">#</a></h2>
+<section id="dadk-profileutils-profileutils">
+<span id="id3"></span><h3>ProfileUtils<a class="headerlink" href="#dadk-profileutils-profileutils" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.ProfileUtils.ProfileUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.ProfileUtils.</span></span><span class="sig-name descname"><span class="pre">ProfileUtils</span></span><a class="headerlink" href="#dadk.ProfileUtils.ProfileUtils" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">ProfileUtils</span></code> provides methods for handling prf files.</p>
+</dd></dl>
+
+<section id="id4">
+<h4>Classmethods<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-profileutils-profileutils-delete-annealer-access-profile">
+<dt class="sig sig-object py" id="dadk.ProfileUtils.ProfileUtils.delete_annealer_access_profile">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ProfileUtils.</span></span><span class="sig-name descname"><span class="pre">delete_annealer_access_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.ProfileUtils.ProfileUtils.delete_annealer_access_profile" title="Link to this definition">#</a></dt>
+<dd><p>Delete an existing profile <cite>annealer.prf</cite> containing annealer access data. The profile can be
+located in the current work directory (‘local’) or for the current user in its home directory under
+<cite>~/.dadk</cite> (‘central’). If <code class="docutils literal notranslate"><span class="pre">name</span></code> is specified the profile is removed from the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>store</strong> (<em>str</em>) – possible values ‘local’ or ‘central’ restrict the search accordingly</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – filename of the profile in the profile store</p></li>
+<li><p><strong>silent</strong> (<em>bool</em>) – print results if set to False, default is True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-profileutils-profileutils-get-annealer-access-profile">
+<dt class="sig sig-object py" id="dadk.ProfileUtils.ProfileUtils.get_annealer_access_profile">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ProfileUtils.</span></span><span class="sig-name descname"><span class="pre">get_annealer_access_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">access_profile_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restrict_search</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#dadk.ProfileUtils.ProfileUtils.get_annealer_access_profile" title="Link to this definition">#</a></dt>
+<dd><p>The function searches a json file and returns the contents as dictionary. If a <code class="docutils literal notranslate"><span class="pre">name</span></code> is specified the
+profile is loaded from the profile store <code class="docutils literal notranslate"><span class="pre">~/.dadk/profiles</span></code>. The profile <code class="docutils literal notranslate"><span class="pre">annealer.prf</span></code> can be
+located in the current work directory (<code class="docutils literal notranslate"><span class="pre">restriction_search='local'</span></code>) or for the current user in the home
+directory under <code class="docutils literal notranslate"><span class="pre">~/.dadk``(``restriction_search='central'</span></code>). If no restriction is specified, the profile is
+search first locally then centrally.
+If no profile is found the function returns an empty dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>access_profile_file</strong> (<em>str</em>) – absolute filename of the profile</p></li>
+<li><p><strong>restrict_search</strong> (<em>str</em>) – possible values ‘local’ or ‘central’ restrict the search accordingly</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the profile in the profile store</p></li>
+<li><p><strong>silent</strong> (<em>bool</em>) – print results if set to False, default is True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict delivering content of annealer.prf as python dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-profileutils-profileutils-list-annealer-access-profiles">
+<dt class="sig sig-object py" id="dadk.ProfileUtils.ProfileUtils.list_annealer_access_profiles">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ProfileUtils.</span></span><span class="sig-name descname"><span class="pre">list_annealer_access_profiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.ProfileUtils.ProfileUtils.list_annealer_access_profiles" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve list of current stored annealer profiles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> also list local profiles, else list only profile in profile-store</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of profile names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-profileutils-profileutils-store-annealer-access-profile">
+<dt class="sig sig-object py" id="dadk.ProfileUtils.ProfileUtils.store_annealer_access_profile">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ProfileUtils.</span></span><span class="sig-name descname"><span class="pre">store_annealer_access_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'local'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_in_profile_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solvers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annealer_protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'http'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annealer_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annealer_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8080</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annealer_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_connection_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubo_blob_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'qubo'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty_qubo_blob_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'penalty_qubo'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inequalities_blob_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inequalities'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">81</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl_verify</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssl_disable_warnings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#dadk.ProfileUtils.ProfileUtils.store_annealer_access_profile" title="Link to this definition">#</a></dt>
+<dd><p>Store connection and authentication parameters for annealer service as profile <cite>annealer.prf</cite>. The profile can be
+located in the current work directory (<cite>store=’local’</cite>) or for the current user in the home directory under
+<cite>~/.dadk</cite> (<cite>store=’central’</cite>). The retrieval function will first look locally, then centrally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>store</strong> (<em>str</em>) – location of profile may be ‘local’, ‘central’ or ‘store’.</p></li>
+<li><p><strong>name_in_profile_store</strong> (<em>str</em>) – filename in profile store</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – description of profile, usage, etc.</p></li>
+<li><p><strong>solvers</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of available solvers on the target system.</p></li>
+<li><p><strong>annealer_protocol</strong> (<em>str</em>) – Protocol for Digital Annealer access (http or https)</p></li>
+<li><p><strong>annealer_address</strong> (<em>str</em>) – IP address of the host machine of Digital Annealer</p></li>
+<li><p><strong>annealer_port</strong> (<em>int</em>) – Port of Digital Annealer service on the host machine</p></li>
+<li><p><strong>annealer_path</strong> (<em>str</em>) – Path prefix used as common root for all REST productions</p></li>
+<li><p><strong>storage_connection_string</strong> (<em>str</em>) – account connection key for Azure Blob</p></li>
+<li><p><strong>container_name</strong> (<em>str</em>) – default container for Azure Blob</p></li>
+<li><p><strong>qubo_blob_name</strong> (<em>str</em>) – name of the qubo json in the Azure Blob, default: ‘qubo’</p></li>
+<li><p><strong>penalty_qubo_blob_name</strong> (<em>str</em>) – name of the penalty_qubo json in the Azure Blob, default: ‘penalty_qubo’</p></li>
+<li><p><strong>inequalities_blob_name</strong> (<em>str</em>) – name of the inequalities json in the Azure Blob, default: ‘inequalities’</p></li>
+<li><p><strong>api_key</strong> (<em>str</em>) – Account key for web service interface</p></li>
+<li><p><strong>proxy</strong> (<em>str</em>) – Address of proxy server or <code class="docutils literal notranslate"><span class="pre">None</span></code> (default) if no proxy is used</p></li>
+<li><p><strong>proxy_port</strong> (<em>int</em>) – Port of proxy server addressed by parameter <code class="docutils literal notranslate"><span class="pre">proxy</span></code></p></li>
+<li><p><strong>proxy_user</strong> (<em>str</em>) – User of proxy server addressed by parameter <code class="docutils literal notranslate"><span class="pre">proxy</span></code></p></li>
+<li><p><strong>proxy_password</strong> (<em>str</em>) – Password of proxy server addressed by parameter <code class="docutils literal notranslate"><span class="pre">proxy</span></code></p></li>
+<li><p><strong>timeout</strong> (<em>int</em>) – Timeout for the HTTP/HTTPS request, default is 1800 sec</p></li>
+<li><p><strong>ssl_verify</strong> (<em>bool</em>) – Enable/disable SSL verification.</p></li>
+<li><p><strong>ssl_disable_warnings</strong> (<em>bool</em>) – Enable/disable SSL warnings.</p></li>
+<li><p><strong>silent</strong> (<em>bool</em>) – print results if set to False, default is True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filename where the profile has been stored</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="coordinatesutils">
+<h2>CoordinatesUtils<a class="headerlink" href="#coordinatesutils" title="Link to this heading">#</a></h2>
+<section id="dadk-utils-coordinatesutils-coordinatesutils">
+<span id="id5"></span><h3>CoordinatesUtils<a class="headerlink" href="#dadk-utils-coordinatesutils-coordinatesutils" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.utils.CoordinatesUtils.CoordinatesUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.utils.CoordinatesUtils.</span></span><span class="sig-name descname"><span class="pre">CoordinatesUtils</span></span><a class="headerlink" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils" title="Link to this definition">#</a></dt>
+<dd><p>CoordinatesUtils.</p>
+</dd></dl>
+
+<section id="id6">
+<h4>Classmethods<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-utils-coordinatesutils-coordinatesutils-generate-coordinates">
+<dt class="sig sig-object py" id="dadk.utils.CoordinatesUtils.CoordinatesUtils.generate_coordinates">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoordinatesUtils.</span></span><span class="sig-name descname"><span class="pre">generate_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">special_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils.generate_coordinates" title="Link to this definition">#</a></dt>
+<dd><p>Generate List of coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>quantity</strong> (<em>int</em>) – number of coordinates</p></li>
+<li><p><strong>size</strong> (<em>float</em>) – maximum distance from the centre</p></li>
+<li><p><strong>min_distance</strong> (<em>float</em>) – minimum distance between all coordinates</p></li>
+<li><p><strong>special_case</strong> (<em>bool</em>) – coordinates on a circle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of coordinates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[tuple[float, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-utils-coordinatesutils-coordinatesutils-plot-coordinates">
+<dt class="sig sig-object py" id="dadk.utils.CoordinatesUtils.CoordinatesUtils.plot_coordinates">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">CoordinatesUtils.</span></span><span class="sig-name descname"><span class="pre">plot_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(5,</span> <span class="pre">5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils.plot_coordinates" title="Link to this definition">#</a></dt>
+<dd><p>Creates a plot of all coordinates with matplotlib <code class="docutils literal notranslate"><span class="pre">scatter</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coordinates</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em><em>]</em>) – list of (x,y) coordinates</p></li>
+<li><p><strong>xlim</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – xlim of the plot, see matplotlib documentation</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – ylim of the plot, see matplotlib documentation</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – size of figure in inch</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – png image filename</p></li>
+<li><p><strong>dpi</strong> (<em>int</em>) – resolution of the png image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="tsputils">
+<h2>TSPUtils<a class="headerlink" href="#tsputils" title="Link to this heading">#</a></h2>
+<section id="dadk-utils-tsputils-tsputils">
+<span id="id7"></span><h3>TSPUtils<a class="headerlink" href="#dadk-utils-tsputils-tsputils" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="dadk.utils.TSPUtils.TSPUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dadk.utils.TSPUtils.</span></span><span class="sig-name descname"><span class="pre">TSPUtils</span></span><a class="headerlink" href="#dadk.utils.TSPUtils.TSPUtils" title="Link to this definition">#</a></dt>
+<dd><p>TSPUtils.</p>
+</dd></dl>
+
+<section id="id8">
+<h4>Classmethods<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<dl class="py method" id="dadk-utils-tsputils-tsputils-create-qubos">
+<dt class="sig sig-object py" id="dadk.utils.TSPUtils.TSPUtils.create_QUBOS">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TSPUtils.</span></span><span class="sig-name descname"><span class="pre">create_QUBOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_hot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.OneHot" title="dadk.BinPol.OneHot"><span class="pre">OneHot</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">OneHot.two_way</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><span class="pre">BinPol</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#dadk.utils.TSPUtils.TSPUtils.create_QUBOS" title="Link to this definition">#</a></dt>
+<dd><p>Generate TSP-qubos for given <code class="docutils literal notranslate"><span class="pre">coordinates</span></code> list. In particular, cities are indexed by <code class="docutils literal notranslate"><span class="pre">coordinates</span></code> index and distances
+between cities are computed. The full qubo consists of the distance-objective, i.e. the qubo to minimize the overall travelled distance weighted with <code class="docutils literal notranslate"><span class="pre">factor_distance</span></code>,
+the time-constraint qubo, i.e. the qubo to enforce that at each time exactly one city is visited weighted by <code class="docutils literal notranslate"><span class="pre">factor_rules</span></code>, and
+the city-constraint qubo, i.e. the qubo to enforce that each city is visited at exactly one time weighted by <code class="docutils literal notranslate"><span class="pre">factor_rules</span></code>.
+Returned are the full qubo, the time-constraint, the city-constraint and the distance-objective.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coordinates</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em><em>]</em>) – List of (x,y) coordinates</p></li>
+<li><p><strong>factor_rules</strong> (<em>float</em>) – Factor for constraints</p></li>
+<li><p><strong>factor_distance</strong> (<em>float</em>) – Factor for objective</p></li>
+<li><p><strong>one_hot</strong> (<a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.OneHot" title="dadk.BinPol.OneHot"><em>OneHot</em></a>) – One-hot declaration which is enabled via the generated <a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">dadk.BinPol.VarShapeSet</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Qubo with full TSP problem, qubo with time-constraint, qubo with city-constraint, qubo with distance-objective</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[<a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol">BinPol</a>,<a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol">BinPol</a>,<a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol">BinPol</a>,<a class="reference internal" href="dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol">BinPol</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method" id="dadk-utils-tsputils-tsputils-plot-route">
+<dt class="sig sig-object py" id="dadk.utils.TSPUtils.TSPUtils.plot_route">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TSPUtils.</span></span><span class="sig-name descname"><span class="pre">plot_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">route</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(5.0,</span> <span class="pre">5.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dadk.utils.TSPUtils.TSPUtils.plot_route" title="Link to this definition">#</a></dt>
+<dd><p>Creates a plot of all coordinates and a single route with matplotlib <code class="docutils literal notranslate"><span class="pre">scatter</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coordinates</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em><em>]</em>) – list of (x,y) coordinates</p></li>
+<li><p><strong>route</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – route is a list of indices of the coordinate list</p></li>
+<li><p><strong>highlight</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – route like list of cities which connection should be highlighted</p></li>
+<li><p><strong>xlim</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – xlim of the plot, see matplotlib documentation</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – ylim of the plot, see matplotlib documentation</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em><em>[</em><em>float</em><em>,</em><em>float</em><em>]</em>) – size of figure in inch</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – png image filename</p></li>
+<li><p><strong>dpi</strong> (<em>int</em>) – resolution of the png image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Solvers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solvers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Internal.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Internal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Utils</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Utils</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-2-string">configuration_2_string</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.configuration_2_string"><code class="docutils literal notranslate"><span class="pre">configuration_2_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-version-check">dadk_version_check</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.dadk_version_check"><code class="docutils literal notranslate"><span class="pre">dadk_version_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-to-n">round_to_n</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.round_to_n"><code class="docutils literal notranslate"><span class="pre">round_to_n()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-2-configuration">string_2_configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.string_2_configuration"><code class="docutils literal notranslate"><span class="pre">string_2_configuration()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-library">load_library</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.load_library"><code class="docutils literal notranslate"><span class="pre">load_library()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-dicts">merge_dicts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.merge_dicts"><code class="docutils literal notranslate"><span class="pre">merge_dicts()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math-prod">math_prod</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.math_prod"><code class="docutils literal notranslate"><span class="pre">math_prod()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i18n-get">i18n_get</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.i18n_get"><code class="docutils literal notranslate"><span class="pre">i18n_get()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-size-info">file_size_info</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.file_size_info"><code class="docutils literal notranslate"><span class="pre">file_size_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-encode">html_encode</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.Utils.html_encode"><code class="docutils literal notranslate"><span class="pre">html_encode()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsontools">JSONTools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daodecoder">DaoDecoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoDecoder"><code class="docutils literal notranslate"><span class="pre">DaoDecoder</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classmethods">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoDecoder.object_hook"><code class="docutils literal notranslate"><span class="pre">DaoDecoder.object_hook()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoDecoder.register_decoder"><code class="docutils literal notranslate"><span class="pre">DaoDecoder.register_decoder()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoDecoder.register_function"><code class="docutils literal notranslate"><span class="pre">DaoDecoder.register_function()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daoencoder-jsonencoder">DaoEncoder(JSONEncoder)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoEncoder"><code class="docutils literal notranslate"><span class="pre">DaoEncoder</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoEncoder.register_encoder"><code class="docutils literal notranslate"><span class="pre">DaoEncoder.register_encoder()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoEncoder.register_function"><code class="docutils literal notranslate"><span class="pre">DaoEncoder.register_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.JSONTools.DaoEncoder.default"><code class="docutils literal notranslate"><span class="pre">DaoEncoder.default()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profileutils">ProfileUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-profileutils-profileutils">ProfileUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.ProfileUtils.ProfileUtils"><code class="docutils literal notranslate"><span class="pre">ProfileUtils</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.ProfileUtils.ProfileUtils.delete_annealer_access_profile"><code class="docutils literal notranslate"><span class="pre">ProfileUtils.delete_annealer_access_profile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.ProfileUtils.ProfileUtils.get_annealer_access_profile"><code class="docutils literal notranslate"><span class="pre">ProfileUtils.get_annealer_access_profile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.ProfileUtils.ProfileUtils.list_annealer_access_profiles"><code class="docutils literal notranslate"><span class="pre">ProfileUtils.list_annealer_access_profiles()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.ProfileUtils.ProfileUtils.store_annealer_access_profile"><code class="docutils literal notranslate"><span class="pre">ProfileUtils.store_annealer_access_profile()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinatesutils">CoordinatesUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-utils-coordinatesutils-coordinatesutils">CoordinatesUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils"><code class="docutils literal notranslate"><span class="pre">CoordinatesUtils</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils.generate_coordinates"><code class="docutils literal notranslate"><span class="pre">CoordinatesUtils.generate_coordinates()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.CoordinatesUtils.CoordinatesUtils.plot_coordinates"><code class="docutils literal notranslate"><span class="pre">CoordinatesUtils.plot_coordinates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tsputils">TSPUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk-utils-tsputils-tsputils">TSPUtils</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.TSPUtils.TSPUtils"><code class="docutils literal notranslate"><span class="pre">TSPUtils</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Classmethods</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.TSPUtils.TSPUtils.create_QUBOS"><code class="docutils literal notranslate"><span class="pre">TSPUtils.create_QUBOS()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#dadk.utils.TSPUtils.TSPUtils.plot_route"><code class="docutils literal notranslate"><span class="pre">TSPUtils.plot_route()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

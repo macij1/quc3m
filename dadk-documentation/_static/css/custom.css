@@ -1,0 +1,20 @@
+em.sig-param:before {
+	content: '\a';
+    white-space: pre;
+}
+
+.sig{
+    width:100%;
+}
+
+span.n {
+    color: green;
+}
+
+span.default_value {
+    color: blue;
+}
+
+span.sig-return-typehint {
+    color: green;
+}

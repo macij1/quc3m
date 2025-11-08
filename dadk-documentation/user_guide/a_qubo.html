@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quadratic Unconstrained Optimization &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/a_qubo';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Constraints" href="a_constraints.html" />
+    <link rel="prev" title="Structured Variables" href="a_varshape.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why DADK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk_da.html">DADK and Fujitsu’s Digital Annealer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="b_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_solving.html">Solving QUBOs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="a_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_constraints.html">Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_solving.html">Solving Constrained QUBOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_guidance.html">Guidance Configuration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quadratic Unconstrained Optimization</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quadratic-unconstrained-optimization">
+<h1>Quadratic Unconstrained Optimization<a class="headerlink" href="#quadratic-unconstrained-optimization" title="Link to this heading">#</a></h1>
+<p>DADK supports several features to simplify programming of QUBO terms which appear in many optimization problem
+and to improve performance for the generation of such QUBO terms.</p>
+<p>Let <code class="docutils literal notranslate"><span class="pre">var_shape_set</span></code> be programmed and fixed as in the previous section:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadk.BinPol</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">]</span>
+<span class="n">D</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+
+<span class="n">shifts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">]</span>
+<span class="n">S</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shifts</span><span class="p">)</span>
+
+<span class="n">workers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Adam1&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob1&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave1&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl1&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam2&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob2&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave2&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob3&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly3&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave3&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl3&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Adam4&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob4&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly4&#39;</span><span class="p">,</span> <span class="s1">&#39;Dave4&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl4&#39;</span><span class="p">]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">workers</span><span class="p">)</span>
+
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">,</span> <span class="s1">&#39;Adam1&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">,</span> <span class="s1">&#39;Charly2&#39;</span><span class="p">),</span>
+           <span class="p">(</span><span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Early&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl2&#39;</span><span class="p">)]</span>
+
+<span class="n">constant_bits_x_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">D</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">shift</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">blocked</span><span class="p">:</span>
+    <span class="n">constant_bits_x_bits</span><span class="p">[</span><span class="n">days</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="n">shifts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">shift</span><span class="p">),</span> <span class="n">workers</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">worker</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">x_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">constant_bits</span><span class="o">=</span><span class="n">constant_bits_x_bits</span><span class="p">)</span>
+
+<span class="n">demand</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Monday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Tuesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Wednesday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Thursday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="s1">&#39;Friday&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Early&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Late&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
+
+<span class="n">one_hot_groups_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">OneHotGroup</span><span class="p">((</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+                       <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+                       <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)</span>
+                       <span class="k">if</span> <span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">y_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,))</span>
+
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="n">x_bit_array_shape</span><span class="p">,</span>
+                            <span class="n">y_bit_array_shape</span><span class="p">,</span>
+                            <span class="n">one_hot_groups</span><span class="o">=</span><span class="n">one_hot_groups_list</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="exactly-1-bit-on-constraints">
+<h2>Exactly 1-bit-on constraints<a class="headerlink" href="#exactly-1-bit-on-constraints" title="Link to this heading">#</a></h2>
+<p>One such feature is the method <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.add_exactly_1_bit_on" title="dadk.BinPol.BinPol.add_exactly_1_bit_on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_exactly_1_bit_on</span></code></a> which can be used
+to generate constraints related to one hot groups. Consider our example of the previous chapter where some shifts
+<span class="math notranslate nohighlight">\(s\in \mathcal{S}\)</span> on a given day <span class="math notranslate nohighlight">\(d\in \mathcal{D}\)</span> require exactly one worker, i.e., <span class="math notranslate nohighlight">\(a_{d,s}=1\)</span>.
+For such shifts we require <span class="math notranslate nohighlight">\(\left(1-\sum_{w\in \mathcal{W}}x_{d,s,w}\right)^2 = 0.\)</span></p>
+<p>With fixed <code class="docutils literal notranslate"><span class="pre">var_shape_set</span></code> as programmed in the previous section, this type of constraint can be easily programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">qubo</span><span class="o">.</span><span class="n">add_exactly_1_bit_on</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">)],</span> <span class="n">scalar</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, the constraints are multiplied with a weighting factor <code class="docutils literal notranslate"><span class="pre">weight</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The method <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet.generate_penalty_polynomial" title="dadk.BinPol.VarShapeSet.generate_penalty_polynomial"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate_penalty_polynomial</span></code></a> can be used to simplify
+the code above.</p>
+</div>
+</section>
+<section id="exactly-n-bits-on-constraints">
+<h2>Exactly n-bits-on constraints<a class="headerlink" href="#exactly-n-bits-on-constraints" title="Link to this heading">#</a></h2>
+<p>The more general method <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.add_exactly_n_bits_on" title="dadk.BinPol.BinPol.add_exactly_n_bits_on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_exactly_n_bits_on</span></code></a> allows to directly add
+the constraints also for days and shifts with more than one required worker:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+        <span class="n">qubo</span><span class="o">.</span><span class="n">add_exactly_n_bits_on</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">],</span>
+                                   <span class="n">bits</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">)],</span>
+                                   <span class="n">scalar</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For days and shifts for which a one way one hot group over the workers has been defined, the corresponding one hot
+constraint has been added to <code class="docutils literal notranslate"><span class="pre">qubo</span></code> by either of the code examples above.</p>
+</div>
+</section>
+<section id="most-1-bit-on-constraints">
+<h2>Most 1-bit-on constraints<a class="headerlink" href="#most-1-bit-on-constraints" title="Link to this heading">#</a></h2>
+<p>Similarly, the constraint
+<span class="math notranslate nohighlight">\(\sum_{d\in \mathcal{D}}\sum_{w\in \mathcal{W}}\left[\left(\sum_{s\in \mathcal{S}}x_{d,s,w} - 1\right)\sum_{s\in \mathcal{S}}x_{d,s,w}\right]\)</span>
+which enforces that each worker can work in at most one shift per day is programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+        <span class="n">qubo</span><span class="o">.</span><span class="n">add_most_1_bit_on</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)],</span>
+                               <span class="n">scalar</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="other-constraints">
+<h2>Other constraints<a class="headerlink" href="#other-constraints" title="Link to this heading">#</a></h2>
+<p>The constraint to set <span class="math notranslate nohighlight">\(y_w\)</span> to one for <span class="math notranslate nohighlight">\(w\in \mathcal{W}\)</span> if <span class="math notranslate nohighlight">\(x_{d,s,w}=1\)</span> for at least one
+<span class="math notranslate nohighlight">\(d\in \mathcal{D}\)</span> and <span class="math notranslate nohighlight">\(s\in \mathcal{S}\)</span>, i.e., if at least one shift is assigned to the worker is
+formulated as <span class="math notranslate nohighlight">\(\sum_{w\in \mathcal{W}}\left(1 - y_w\right)\left(\sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}x_{d,s,w}\right)\)</span>.</p>
+<p>This constraint can be programmed efficiently by multiplying all brackets in the formula and adding all linear and quadratic terms separately
+to <code class="docutils literal notranslate"><span class="pre">qubo</span></code> instead of first computing the single linear polynomials as separate <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> objects,
+and multiplying them and adding them to <code class="docutils literal notranslate"><span class="pre">qubo</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+            <span class="n">qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+            <span class="n">qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that we have added linear and quadratic terms with the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.add_term" title="dadk.BinPol.BinPol.add_term"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_term</span></code></a> method.</p>
+</section>
+<section id="optimization-objectives">
+<h2>Optimization Objectives<a class="headerlink" href="#optimization-objectives" title="Link to this heading">#</a></h2>
+<p>There are many useful objectives for the example in this section depending on the concrete use case.
+For example, it might be useful from an economic point of view to use the least possible number of workers in order to
+save budget, i.e., to minimize <span class="math notranslate nohighlight">\(\sum_{w\in \mathcal{W}}y_{w}.\)</span> This objective is for example programmed as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="mi">1800</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="n">qubo</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Alternatively, amounting to the worker’s well-being, it might be of interest to distribute the work evenly among the workers
+by minimizing <span class="math notranslate nohighlight">\(\sum_{w\in \mathcal{W}}\left(\frac{D\cdot S}{W} - \sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}x_{d,s,w}\right)^2\)</span>,
+i.e., minimizing the difference between the number of shifts assigned to a worker and the average number of shift per worker.
+This objective can be programmed in the following way</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nr_shifts_per_worker</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">demand</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="n">shift</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">)])</span> <span class="o">/</span> <span class="n">W</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">worker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">workers</span><span class="p">):</span>
+    <span class="n">qubo_tmp</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+    <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="n">nr_shifts_per_worker</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shifts</span><span class="p">):</span>
+            <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+    <span class="n">qubo_tmp</span><span class="o">.</span><span class="n">power2</span><span class="p">()</span>
+    <span class="n">qubo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">qubo_tmp</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Moreover, one should decide for either of the objectives above, since minimizing the number of workers deforms the
+average number of workers per shift. In particular, if the second objective is of interest, one can drop the <span class="math notranslate nohighlight">\(y_w\)</span>
+variables for <span class="math notranslate nohighlight">\(w\in \mathcal{W}\)</span> all together along with constraints including them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the name Quadratic Unconstrained Binary Optimization suggests, all objectives and constraints are summed up within
+one formula. In order to obtain a formula with minimizing states that fulfill all constraints, those constraints
+have to be multiplied with a sufficiently large weight. At the same time, this weight should not be too large,
+otherwise the objective is neglected by Digital Annealer.</p>
+<p>Moreover, Digital Annealer works integer based, so the integer precision of the weights is not infinite. In practice,
+the weight multiplied to constraint QUBOs often does not need to be larger or equal than a proven necessary weight
+but can be smaller and determined by a few experiments.</p>
+</div>
+</section>
+<section id="final-qubo">
+<h2>Final QUBO<a class="headerlink" href="#final-qubo" title="Link to this heading">#</a></h2>
+<p>The final QUBO in the example with objective to minimize the number of workers is
+<span class="math notranslate nohighlight">\(\begin{align}1800\cdot\sum_{w\in \mathcal{W}}y_{w} &amp;+ 2000\cdot\sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}\left(a_{d,s}-\sum_{w\in \mathcal{W}}x_{d,s,w}\right)^2
++ 2000\cdot \sum_{d\in \mathcal{D}}\sum_{w\in \mathcal{W}}\left[\left(\sum_{s\in \mathcal{S}}x_{d,s,w} - 1\right)\sum_{s\in \mathcal{S}}x_{d,s,w}\right]\\
+&amp;+ 2000\cdot \sum_{w\in \mathcal{W}}\left(1 - y_w\right)\left(\sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}x_{d,s,w}\right).\end{align}\)</span></p>
+<p>For the objective to spread work evenly among the workers, the final QUBO is
+<span class="math notranslate nohighlight">\(\begin{align}400\cdot\sum_{w\in \mathcal{W}}\left(\frac{D\cdot S}{W} - \sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}x_{d,s,w}\right)^2 &amp;+ 2000\cdot\sum_{d\in \mathcal{D}}\sum_{s\in \mathcal{S}}\left(a_{d,s}-\sum_{w\in \mathcal{W}}x_{d,s,w}\right)^2\\
+&amp;+ 2000\cdot \sum_{d\in \mathcal{D}}\sum_{w\in \mathcal{W}}\left[\left(\sum_{s\in \mathcal{S}}x_{d,s,w} - 1\right)\sum_{s\in \mathcal{S}}x_{d,s,w}\right].
+\end{align}\)</span></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="a_varshape.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Structured Variables</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="a_constraints.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Constraints</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exactly-1-bit-on-constraints">Exactly 1-bit-on constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exactly-n-bits-on-constraints">Exactly n-bits-on constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-1-bit-on-constraints">Most 1-bit-on constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-constraints">Other constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-objectives">Optimization Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-qubo">Final QUBO</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

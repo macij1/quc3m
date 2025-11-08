@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quadratic Unconstrained Optimization &#8212; dadk 2025.07.17 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=893b9e17" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4f3b563b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/b_qubo';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Solving QUBOs" href="b_solving.html" />
+    <link rel="prev" title="Structured Variables" href="b_varshape.html" />
+<style>
+    .wy-side-nav-search{
+    background-color: #3C171E
+    }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/dadk.png" class="logo__image only-light" alt="dadk 2025.07.17 documentation - Home"/>
+    <img src="../_static/dadk.png" class="logo__image only-dark pst-js-only" alt="dadk 2025.07.17 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    Digital Annealer Development Kit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Get started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why.html">Why DADK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dadk_da.html">DADK and Fujitsu’s Digital Annealer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="b_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="b_solving.html">Solving QUBOs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="a_varshape.html">Structured Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_qubo.html">Quadratic Unconstrained Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_constraints.html">Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_solving.html">Solving Constrained QUBOs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a_guidance.html">Guidance Configuration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quadratic Unconstrained Optimization</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quadratic-unconstrained-optimization">
+<h1>Quadratic Unconstrained Optimization<a class="headerlink" href="#quadratic-unconstrained-optimization" title="Link to this heading">#</a></h1>
+<p>Quadratic Unconstrained Binary Optimization (QUBO) is a mathematical optimization technique in which a business problem
+is formulated with help of binary variables as a quadratic cost function. A variable configuration which minimizes
+(sometimes also formulated as maximization problem) the quadratic cost function represents an optimal solution of the
+optimization problem. Since the corresponding quadratic polynomial represents the optimization problem, the latter is often
+called QUBO as well.</p>
+<p>One core functionality of Digital Annealer Development Kit is the programming of QUBOs in form of
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> objects.</p>
+<section id="example-problem">
+<h2>Example Problem<a class="headerlink" href="#example-problem" title="Link to this heading">#</a></h2>
+<p>Consider the MaxCut problem with a graph <span class="math notranslate nohighlight">\(G(V,E)\)</span> where <span class="math notranslate nohighlight">\(V=\{0,\ldots,N-1\}\)</span> with <span class="math notranslate nohighlight">\(N&gt;0\)</span> is the set of
+vertices and <span class="math notranslate nohighlight">\(E\)</span> is the set of edges. The goal is to find a maximal cut, i.e., to split the vertices into two sub-sets
+<span class="math notranslate nohighlight">\(S \subset V\)</span> and <span class="math notranslate nohighlight">\(V \setminus S\)</span> such that the number of edges in <span class="math notranslate nohighlight">\(E\)</span> for which the adjacent vertices are in different sets is maximized.
+To formulate this problem as a QUBO we first define for each <span class="math notranslate nohighlight">\(i\in V\)</span> a binary decision variable</p>
+<p><span class="math notranslate nohighlight">\(\begin{equation} x_i = \left\lbrace\begin{matrix}  1, &amp;\text{if vertex } i \in S \\ 0, &amp;\text{if vertex } i \in V \setminus S
+\end{matrix}
+\right.
+\end{equation}\)</span></p>
+</section>
+<section id="variables-and-qubo">
+<h2>Variables and QUBO<a class="headerlink" href="#variables-and-qubo" title="Link to this heading">#</a></h2>
+<p>The quadratic polynomial which needs to be minimized (in order to maximize) the number of edges in the cut is formulated as</p>
+<p><span class="math notranslate nohighlight">\(H = -\sum_{(i,j) \in E}  \left(x_{i} - x_{j} \right) ^2\)</span>.</p>
+<p>The variables <span class="math notranslate nohighlight">\(x_i\)</span> can be defined using a <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.VarShapeSet" title="dadk.BinPol.VarShapeSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarShapeSet</span></code></a> object and the QUBO for
+the MaxCut problem using a <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> object can be programmed as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dadk.BinPol</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="n">x_bit_array_shape</span> <span class="o">=</span> <span class="n">BitArrayShape</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,))</span>
+<span class="n">var_shape_set</span> <span class="o">=</span> <span class="n">VarShapeSet</span><span class="p">(</span><span class="n">x_bit_array_shape</span><span class="p">)</span>
+<span class="n">BinPol</span><span class="o">.</span><span class="n">freeze_var_shape_set</span><span class="p">(</span><span class="n">var_shape_set</span><span class="p">)</span>
+<span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">E</span><span class="p">:</span>
+    <span class="n">qubo</span> <span class="o">+=</span> <span class="o">-</span><span class="p">(</span><span class="n">Term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">-</span> <span class="n">Term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">j</span><span class="p">)))</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Alternatively, the last three lines can be written as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">E</span><span class="p">:</span>
+    <span class="n">tmp_qubo</span> <span class="o">=</span> <span class="o">-</span> <span class="n">BinPol</span><span class="p">()</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">qubo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tmp_qubo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You have seen how to define a QUBO, add terms to it, how to add two QUBOs together, how to multiply a scalar to the QUBO
+and how to multiply two QUBOs with each other.</p>
+<p>The scalar multiplication and the multiplication of two QUBOs might have been a bit hidden.
+Scalar multiplication was triggered by negation of the term <span class="math notranslate nohighlight">\(\left(x_{i} - x_{j} \right) ^2\)</span> for given <span class="math notranslate nohighlight">\((i,j)\in E\)</span>.
+Multiplication of two QUBOs was done with the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.power" title="dadk.BinPol.BinPol.power"><code class="xref py py-meth docutils literal notranslate"><span class="pre">power</span></code></a> method here. Multiplication of
+a scalar could also have been explicitly called by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tmp_qubo</span><span class="o">.</span><span class="n">multiply_scalar</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead of using the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.power" title="dadk.BinPol.BinPol.power"><code class="xref py py-meth docutils literal notranslate"><span class="pre">power</span></code></a> method, one could also have multiplied the (linear) polynomial with
+itself</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_qubo</span> <span class="o">=</span> <span class="n">BinPol</span><span class="p">()</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">add_term</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+<span class="n">tmp_qubo</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">tmp_qubo</span><span class="p">)</span>
+<span class="n">tmp_qubo</span><span class="o">.</span><span class="n">multiply_scalar</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.multiply" title="dadk.BinPol.BinPol.multiply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">multiply</span></code></a> method can be used to multiply a different or here the same (linear)
+<a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> object to a current (linear) <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> object.
+Since the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.power" title="dadk.BinPol.BinPol.power"><code class="xref py py-meth docutils literal notranslate"><span class="pre">power</span></code></a> method multiplies the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol" title="dadk.BinPol.BinPol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinPol</span></code></a> to itself,
+it is implemented more efficient than the <a class="reference internal" href="../api/dadk/BinPol.html#dadk.BinPol.BinPol.multiply" title="dadk.BinPol.BinPol.multiply"><code class="xref py py-meth docutils literal notranslate"><span class="pre">multiply</span></code></a> method and should be preferred.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="b_varshape.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Structured Variables</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="b_solving.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Solving QUBOs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-problem">Example Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-and-qubo">Variables and QUBO</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Fujitsu Germany GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
