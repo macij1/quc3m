@@ -19,15 +19,6 @@ We later showed the same pipeline applies to a completely different domain:
 
 ---
 
-## 📓 Hackathon Problem & Solution Notebooks
-
-➡️ **The Jupyter notebooks in this repo include the full hackathon problem and our final solution.**  
-They document the reasoning, the QUBO formulation, intermediate experiments, and final results.
-
-If you're here to understand the challenge or reproduce our solution, **start with the notebooks**.
-
----
-
 ## Repository Structure
 
 - **RetoMolecularComparison/modules/**  
@@ -41,6 +32,13 @@ If you're here to understand the challenge or reproduce our solution, **start wi
 
 - **dadk_benchmark.py**  
   Benchmark script comparing QUBO SDKs on a TSP instance.
+
+➡️ **The Jupyter notebooks in RetoMolecularComparison this repo include the full hackathon problem and our final solution.**  
+They document the reasoning, the QUBO formulation, intermediate experiments, and final results. 
+
+If you're here to understand the challenge or reproduce our solution, **start with the notebooks**.
+
+➡️ Especial thanks to [QCentroid](google.com/search?q=Qcentroid&rlz=1C5CHFA_enES1144US1144&oq=Qcentroid&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDwyBggDEEUYPDIGCAQQRRg80gEIMTMyMmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8) and [Fsas](https://eu.fsastech.com/eu/) for making these resources available to us!
 
 ---
 
